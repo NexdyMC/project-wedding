@@ -1,5 +1,5 @@
-<?php
-include 'app/koneksi.php';
+<?php require __DIR__ . '../app/koneksi.php'; 
+
 ?>
 <!doctype html>
 <html lang="en">

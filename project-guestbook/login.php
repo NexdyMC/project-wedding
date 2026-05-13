@@ -1,6 +1,7 @@
   <?php
 session_start();
-include 'app/koneksi.php';
+$koneksi = mysqli_connect("localhost", "root", "", "db_guest_book");
+
 
 if (isset($_POST['submit'])) {
 

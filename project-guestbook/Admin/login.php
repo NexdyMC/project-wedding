@@ -1,6 +1,11 @@
 <?php
 session_start();
-include 'app/koneksi.php';
+$koneksi = mysqli_connect("localhost", "root", "", "db_wedding");
+
+if (!$koneksi) {
+    die("Koneksi gagal: " . mysqli_connect_error());
+}
+
 
 
 if (isset($_POST['submit'])) {

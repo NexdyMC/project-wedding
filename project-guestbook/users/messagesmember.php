@@ -1,32 +1,30 @@
-<?php
-include 'app/koneksi.php';
+<?php 
+$koneksi = mysqli_connect("localhost", "root", "", "db_wedding");
+
+if (!$koneksi) {
+    die("Koneksi gagal: " . mysqli_connect_error());
+}
+
 ?>
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seed Filter</title>
+    <title>Messages | Guest Book</title>
+
     <!-- everything default and using `weight: 100` -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-      rel="stylesheet"
-    />
-
-<style><?php include 'components/messagesONLY.css' ?></style>
-    <link rel="stylesheet" href="components/layout.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="components/dashboard.css">
+    <link rel="stylesheet" href="components/layout.css">
     <style>
+      <?php include 'components/messagesONLY.css' ?>
       @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap");
-    </style>
-    <style>
       @import url("https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap");
-    </style>
-    <style>
       @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
     </style>
-    <link rel="stylesheet" href="components/dashboard.css">
+    
   </head>
   <body>
     <main>

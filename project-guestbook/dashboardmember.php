@@ -1,5 +1,6 @@
 <?php
-include 'app/koneksi.php';
+$koneksi = mysqli_connect("localhost", "root", "", "db_wedding");
+
 
 
 // Hitung Hadir

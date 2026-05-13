@@ -1,5 +1,9 @@
 <?php
-include '../app/koneksi.php';
+$koneksi = mysqli_connect("localhost", "root", "", "db_wedding");
+
+if (!$koneksi) {
+    die("Koneksi gagal: " . mysqli_connect_error());
+}
 
 $q_hadir = mysqli_query($koneksi, "SELECT COUNT(*) as total FROM tamu WHERE keterangan='hadir'");
 $d_hadir = mysqli_fetch_assoc($q_hadir);

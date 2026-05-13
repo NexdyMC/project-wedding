@@ -1,5 +1,5 @@
 <?php
-include 'app/koneksi.php';
+$koneksi = mysqli_connect("localhost", "root", "", "db_wedding");
 
 
 // Hitung Hadir
@@ -92,8 +92,7 @@ $total_semua = $d_total['total'];
               </div>
             </div>
 
-            <div class="rectangle background-3" data-aos="fade-up" data-aos-duration="3000"
-           data-aos-anchor-placement="center-center">
+            <div class="rectangle background-3" data-aos="fade-up" data-aos-duration="3000" data-aos-anchor-placement="center-center">
               <div class="card-title">
                 <div class="icon">
                   <span class="material-symbols-outlined icon-circle">person</span>
