@@ -1,0 +1,307 @@
+* {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+  padding: 0px;
+}
+
+:root {
+  --text: #4a3f35;
+  --background: #FFF6F2;
+  --border-input:#4A3F35;
+}
+
+
+/* ANIMASI */
+.animasi-1 {
+position: fixed;
+top: 0;
+left: 0;
+}
+
+.animasi-2 {
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+
+@keyframes gerak {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(20px); }
+  100% { transform: translateY(0); }
+}
+
+.animasi-1, .animasi-2 {
+  animation: gerak 2s infinite ease-in-out;
+}
+/* AKHIR ANIMASI */
+body {
+    background-color: var(--background);
+}
+
+#layar {
+  height: 80vh;
+  width: 100%;
+  background-color: #fff6f2;
+}
+
+.container {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  height: 80vh;
+}
+
+.container-image {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.container-image img {
+  padding: 15px;
+}
+
+.container-image p {
+  text-align: justify;
+  height: 20vh;
+  margin: 20px;
+  font-size: 14px;
+  padding: 20px;
+}
+
+.judul {
+  text-align: center;
+}
+
+
+.tombol .form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+  background-color: #e8b4b8;
+  border-radius: 12px;
+  color: #4a3f35;
+  text-decoration: none;
+  font-weight: bold;    
+}
+
+.tombol .btn a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+  background-color: #e8b4b8;
+  border-radius: 12px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.5s ease;
+}
+
+
+.tombol {
+  
+  display: flex;
+  gap: 3rem;
+  justify-content: space-around;
+}
+
+.tombol a:hover {
+  background-color: #ff5a60;
+}
+
+.btn p {
+  font-size: 11px;
+}
+
+.btn {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 4rem;
+}
+
+
+/* 1. HP (default) */
+
+.container {
+  flex-direction: column;
+}
+
+/* 2. Tablet */
+@media (min-width: 768px) {
+
+    .container-image p {
+        width: 50vh;
+    }
+
+    .animasi-1 img {
+        width: 200px;
+    }
+    .animasi-2 img {
+        width: 200px;
+    }
+  /* style tablet */
+}
+
+/* 3. Desktop */
+@media (min-width: 1024px) {
+
+    .container-image p {
+        width: 50vh;
+    }
+
+    .animasi-1 img {
+        width: 300px;
+    }
+
+    .animasi-2 img {
+        width: 300px;
+    }
+
+    form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    form input[type=text] {
+        width: 300px;
+    }
+    form input[type=password] {
+        width: 300px;
+    }
+        }
+    form input[type=tel] {
+        width: 300px;
+    }
+    form textarea {
+        width: 300px;
+    }
+  /* style desktop */
+
+
+/* FORM STYLE */
+.container-form h2 {
+    text-align: center;
+    padding: 10px;
+    width: 17   0vh;
+    
+}
+.container-form {
+    background: white;
+    border: 2px solid #61574c;
+    border-radius: 20px;
+    padding: 2rem;
+    /* width: 100%;  */
+    width: 400px;
+    margin: auto; 
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .form {
+    margin: 16px;
+    
+  }
+  
+  form {
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.attendance {
+    display: flex;
+    flex-direction: column; /* Judul di atas, opsi di bawah */
+    align-items: center;    /* Mengetengahkan seluruh grup ini */
+    margin: 15px 0;
+    width: 100%;
+}
+.attendance p {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.attendance label {
+    margin-right: 15px;
+}
+
+.options-group input[type="radio"] {
+    margin: 0;            /* SANGAT PENTING: Menghapus margin bawaan browser pada bulatan */
+    cursor: pointer;
+}
+
+form input[type=text] {
+    padding: 10px;
+    margin: 15px;
+    border-radius: 20px;
+    border: none;
+    border: 1px solid var(--border-input);
+}
+form input[type=radio] {
+    padding: 10px;
+    margin: 15px;
+    border-radius: 20px;
+    border: none;
+    border: 1px solid var(--border-input);
+}
+form input[type=password] {
+    padding: 10px;
+    margin: 15px;
+    border-radius: 20px;
+    border: none;
+    border: 1px solid var(--border-input);
+}
+form input[type=tel] {
+    padding: 10px;
+    margin: 15px;
+    border-radius: 20px;
+    border: none;
+    border: 1px solid var(--border-input);
+}
+.form textarea {
+    padding: 3px;
+    margin: 15px;
+    border: none;
+    border: 1px solid var(--border-input);
+    border-radius: 2px;
+}
+.message {
+    padding: 6px;
+    margin: 15px;
+    border: none;
+    border: 1px solid var(--border-input);
+    border-radius: 2px;
+}
+.form button {
+  padding: 3px;
+  border-radius: 8px;
+  padding: 4px;
+}
+.form button:hover {
+  background-color: #a35457;
+}
+@media screen and (max-width: 480px) {
+    
+    .container-form {
+        width: 55%;        /* Form lebih lebar di layar kecil agar lega */
+        padding: 1rem;     /* Kurangi padding dalam agar ruang input lebih luas */
+        border-radius: 15px;
+    }
+    form input[type=text] {
+    padding: 10px;
+    margin: 15px;
+    border-radius: 20px;
+    border: none;
+    border: 1px solid var(--border-input);
+}
+  }

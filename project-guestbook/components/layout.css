@@ -1,0 +1,126 @@
+/* ===============================
+   MOBILE (HP SEMUA JENIS)
+================================= */
+@media (max-width: 768px) {
+
+  main {
+    grid-template-columns: 1fr;
+    grid-template-rows: 80px 1fr;
+  }
+
+  /* BURGER MUNCUL */
+  .burger {
+    display: block;
+  }
+
+  /* SIDEBAR JADI SLIDE */
+  .dashboard-navbar {
+    position: fixed;
+    top: 0;
+    left: -260px;
+    height: 100vh;
+    width: 250px;
+    z-index: 999;
+    transition: 0.3s ease;
+  }
+
+  .dashboard-navbar.active {
+    left: 0;
+  }
+
+  /* CONTENT FULL */
+  .dashboard-content {
+    grid-column: 1;
+    padding: 20px;
+  }
+
+  /* CARD JADI 2 KOLOM */
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .color-3 {
+    grid-column: span 2;
+  }
+
+  .card-container span {
+    font-size: 24px;
+  }
+
+  /* ATTENDANCE */
+  .attendance {
+    font-size: 14px;
+  }
+
+  .herois {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .herois a {
+    font-size: 14px;
+  }
+
+  /* MESSAGE PAGE FIX */
+  .rectangle-messages {
+    width: 500px;              
+    height: auto;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.25);
+    background-color: #fef1eb;
+  }
+
+  .messages-body {
+    height: auto;
+    width: 100%;
+  }
+
+  /* HAPUS WIDTH BESAR YANG MERUSAK */
+  .content {
+    width: 100%;
+  }
+
+  .msg {
+    width: 100%;;
+    margin: 20px 0px 20px 0px;
+    padding: 20px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.25);
+    background-color: #fff6f2;
+    box-shadow: inset 0 4px 20px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+
+  .msg p {
+    font-size: 15px;
+  }
+}
+
+
+/* ===============================
+   TABLET
+================================= */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+
+/* ===============================
+   DESKTOP
+================================= */
+@media (min-width: 1025px) {
+
+  .card-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+}
