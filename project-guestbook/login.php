@@ -1,7 +1,8 @@
-  <?php
-session_start();
-$koneksi = mysqli_connect("localhost", "root", "", "db_guest_book");
+<?php
+include 'app/koneksi.php';
+include 'app/title.php';
 
+session_start();
 
 if (isset($_POST['submit'])) {
 
@@ -12,20 +13,7 @@ if (isset($_POST['submit'])) {
   $data = mysqli_fetch_assoc($query);
 
   if ($data) {
-
-    if (password_verify($password, $data['password'])) {
-
-      // ⬇ SET SESSION DI SINI (SETELAH LOGIN BERHASIL)
-      $_SESSION['username'] = $data['username'];
-      $_SESSION['id'] = $data['id'];
-
-      header("Location: dashboard.php");
-      exit();
-
-    } else {
-      echo "Password salah";
-    }
-
+    header("Location: dashboard.php");
   } else {
     echo "Username tidak ditemukan";
   }
@@ -38,7 +26,7 @@ if (isset($_POST['submit'])) {
     <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Wedding Invitation</title>
+      <title><?= $title ; ?></title>
       <!-- icons google -->
       <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
@@ -96,7 +84,7 @@ if (isset($_POST['submit'])) {
               </div>
             <!-- bantuan  -->
             <div class="form-footer">
-              <p><a href="#">Forgot Password?</a></p>
+              <p>Belum punya akun? <a href="register.php"> Register</a></p>
             </div>
 
             <!-- Metode masuk -->
@@ -107,6 +95,7 @@ if (isset($_POST['submit'])) {
       <script>
         const passwordInput = document.getElementById("password");
         const btnToggle = document.getElementById("btnToggle");
+        
 
         btnToggle.addEventListener("click", function () {
           // Cek tipe input saat ini

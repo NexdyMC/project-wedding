@@ -1,6 +1,6 @@
 <?php
-$koneksi = mysqli_connect("localhost", "root", "", "db_wedding");
-
+include 'app/koneksi.php';
+include 'app/title.php';
 
 // Hitung Hadir
 $d_hadir = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as total FROM tamu WHERE keterangan='hadir'"));
@@ -21,18 +21,12 @@ $total_semua = $d_total['total'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    <title>Seed Filter</title>
-    <!-- everything default and using `weight: 100` -->
+    <title><?= $title ?></title>
 
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  />
+    <!-- everything default and using `weight: 100` -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
     
 

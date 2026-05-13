@@ -1,5 +1,6 @@
 <?php
 include 'app/koneksi.php';
+include 'app/title.php'; 
 
 if (isset($_POST['register'])) {
 
@@ -34,13 +35,13 @@ if (isset($_POST['register'])) {
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Register</title>
+<title><?= $title; ?></title>
 
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
-
+<?php include 'components/register.css'; ?>
 * {
   margin: 0;
   padding: 0;
@@ -48,79 +49,6 @@ if (isset($_POST['register'])) {
   font-family: "Lato", sans-serif;
 }
 
-.container {
-  background: #fff6f2;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.card {
-  border: 2px solid #61574c;
-  background: white;
-  border-radius: 20px;
-  padding: 2rem;
-  width: 350px;
-}
-
-.card h2 {
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-.form-grup {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-}
-
-.input-wrapper {
-  display: flex;
-  align-items: center;
-  border-radius: 12px;
-  border: 2px solid #61574c;
-  overflow: hidden;
-}
-
-.input-wrapper input {
-  border: none;
-  outline: none;
-  padding: 10px;
-  flex: 1;
-}
-
-.input-wrapper button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0 10px;
-}
-
-.btn-register {
-  border-radius: 10px;
-  padding: 10px;
-  border: none;
-  width: 100%;
-  cursor: pointer;
-  transition: 0.3s;
-  background: #927e4a79;
-}
-
-.btn-register:hover {
-  background: #927e4a;
-}
-
-.form-footer {
-  text-align: center;
-  margin-top: 1rem;
-}
-
-.form-footer a {
-  color: #927e4a;
-  font-size: 0.9rem;
-  text-decoration: none;
-}
 </style>
 </head>
 

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editor | My Website</title>
+
+    <style>
+        body{
+            font-family: Arial;
+            padding: 20px;
+        }
+
+        textarea{
+            width: 100%;
+            height: 300px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button{
+            padding: 10px 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Realtime Code Sender</h1>
+
+    <button onclick="sendCode()">
+        Open Popup
+    </button>
+
+
+    <textarea id="editor">
+<h1>Hello World</h1>
+<p>Realtime BroadcastChannel</p>
+    </textarea>
+
+    <script>
+
+        // buat channel global
+        const channel = new BroadcastChannel("codeChannel");
+
+        let popupOpened = false;
+
+        function sendCode(){
+
+            // supaya popup tidak terbuka berkali-kali
+            if(!popupOpened){
+
+                window.open(
+                    "login.php",
+                    "Preview Window",
+                    "width=700,height=500"
+                );
+                popupOpened = true;
+            }
+
+            const code = document.getElementById("editor");
+
+            // kirim pertama kali
+            channel.postMessage(code.value);
+
+            // realtime saat mengetik
+            code.addEventListener("input", () => {
+
+                channel.postMessage(code.value);
+
+                console.log("Code terkirim");
+
+            });
+
+        }
+
+    </script>
+
+</body>
+</html>

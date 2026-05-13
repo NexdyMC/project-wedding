@@ -1,5 +1,6 @@
 <?php
 include 'app/koneksi.php';
+include 'app/title.php';
 
 if (isset($_POST['submit'])) {
 
@@ -65,7 +66,7 @@ if (isset($_POST['submit'])) {
       gap: 0.5rem;
     }
   </style>
-  <title>Form Attendance</title>
+  <title><? $title; ?></title>
 </head>
 
 <body>

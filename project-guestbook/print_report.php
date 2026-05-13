@@ -1,21 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html><?php
+<?php 
 include 'app/koneksi.php';
+include 'app/title.php';
+
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Print Data Tamu</title>
+    <title><?= $title ?></title>
     <style>
         body {
             font-family: Arial;

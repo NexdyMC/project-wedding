@@ -1,6 +1,5 @@
 <?php
 include 'app/koneksi.php';
-
 header("Content-Type: application/vnd.ms-excel");
 header("Content-Disposition: attachment; filename=Data_Tamu.xls");
 header("Pragma: no-cache");

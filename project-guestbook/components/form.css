@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #fff6f2;
+  background:  #FDDDE4;
 }
 
 .grid {
@@ -22,16 +22,15 @@ body {
   text-align: left;
 }
 
-.hero-title {
-  text-align: center;
-}
-
 .hero-input {
   display: flex;
   justify-content: center;
   flex-direction: column;
   text-align: left;
+  width: 350px;
 }
+
+h1 {text-align: center;}
 
 input,
 textarea {
@@ -39,7 +38,7 @@ textarea {
   border-radius: 0.5rem;
   border: none;
   border: 2px solid #4a3f35;
-  background-color: whitesmoke;
+  background-color: #FFFAF3;
 }
 
 span {
@@ -52,7 +51,7 @@ span {
   border: 2px solid #4a3f35;
   padding: 1.5rem;
   border-radius: 1rem;
-  background-color: #fff;
+  background: #FFFAF3;
 }
 
 .address,
@@ -65,35 +64,12 @@ span {
   justify-content: space-evenly;
   border: 2px solid #4a3f35;
   border-radius: 15px;
-  background-color: whitesmoke;
-}
-
-label {
-  display: flex;
-  align-items: center;
+  background: #FFF2DF ;
 }
 
 .hero-submit {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
-.submit {
-  width: 100%;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 0.5rem;
-  background: #e8b4b8;
-  font-size: 1rem;
-  font-weight: bold;
-  transition: 0.5s;
-  color: #222;
-}
-
-.submit:hover {
-  background: #f78f98;
-  /* text-shadow: 0px 4px 5px #4a3f35; */
-  cursor: pointer;
-  transform: scale(1.05);
-}

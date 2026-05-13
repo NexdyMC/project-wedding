@@ -1,16 +1,15 @@
 <?php
-$koneksi = mysqli_connect("localhost", "root", "", "db_wedding");
+include 'app/koneksi.php';
+include 'app/title.php';
 
-if (!$koneksi) {
-    die("Koneksi gagal: " . mysqli_connect_error());
-}
+
 ?>
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Seed Filter</title>
+    <title><?= $title ?></title>
     <!-- everything default and using `weight: 100` -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
