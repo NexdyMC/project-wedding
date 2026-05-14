@@ -1,188 +1,78 @@
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    font-family: "Lato", sans-serif;
-  }
 
-  body {
-    background-color: #fff6f2;
-  }
+<style> 
+/* 1. Menyembunyikan Lingkaran Radio Bawaan */
+.card-radio input[type="radio"] {
+    display: none;
+}
 
-  .grid {
-    display: grid;
-    gap: 1rem;
-  }
-
-  .container {
-    height: 100vh;
+/* Container agar card berjajar ke samping */
+.card-radio-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: left;
-  }
+    gap: 20px;
+    max-width: 600px;
+}
 
-  .hero-title {
-    text-align: center;
-  }
-
-  .hero-input {
-
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    text-align: left;
-  }
-
-  input,
-  textarea {
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    border: none;
-    border: 2px solid #4a3f35;
-    background-color: whitesmoke;
-  }
-
-  span {
-    font-size: 20px;
-    font-weight: bold;
-  }
-
-  .hero-input {
-    max-width: 20rem;
-    border: 2px solid #4a3f35;
-    padding: 1.5rem;
-    border-radius: 1rem;
-    background-color: #fff;
-  }
-
-  .address,
-  .message {
-    height: 3rem;
-  }
-
-
-  .attendances {
-    display: flex;
-    justify-content: space-evenly;
-    border: 2px solid #4a3f35;
-    border-radius: 15px;
-    background-color: whitesmoke;
-  }
-
-  label {
-    display: flex;
-    align-items: center;
-  }
-
-  .hero-submit {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .submit {
-    width: 100%;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 0.5rem;
-    background: #e8b4b8;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: 0.5s;
-    color: #222;
-  }
-
-  .form-grup {
+/* 2. Desain Dasar Card (Belum Dipilih) */
+.card-radio label {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .submit:hover {
-    background: #f78f98;
-    /* text-shadow: 0px 4px 5px #4a3f35; */
+    padding: 24px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px; /* Membuat sudut membulat/kotak modern */
+    background-color: #ffffff;
     cursor: pointer;
-    transform: scale(1.05);
-  }
+    transition: all 0.3s ease; /* Efek transisi halus */
+    color: #333333; /* Teks abu-abu gelap agar mudah dibaca */
+}
 
-  .form-grup {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
+/* 3. Efek Hover (Saat kursor diarahkan ke card) */
+.card-radio label:hover {
+    border-color: #ff6b9a;
+    background-color: #fffafb; /* Warna latar belakang pink sangat pudar */
+}
 
-  .hero-submit {
-    display: flex;
-    gap: 15px;
+/* 4. Desain Saat Card Dipilih (:checked) */
+.card-radio input[type="radio"]:checked + label {
+    border-color: #ff4d8d; /* Warna garis tepi saat aktif */
+    background-color: #ff4d8d; /* Warna latar saat aktif */
+    color: #ffffff; /* Teks berubah menjadi PUTIH agar sangat terbaca */
+    box-shadow: 0 8px 16px rgba(255, 77, 141, 0.25); /* Bayangan estetik */
+}
 
-    button {
-      width: 100%;
-      color: white;
-      padding: 12px;
-      border-radius: 0.5rem;
-      border: none;
-      cursor: pointer;
-    }
-  }
+/* --- Styling Teks di dalam Card --- */
+.card-radio .title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
 
-  .btn-update {
-    background-color: #ff6b9a;
-  }
-
-  .btn-delete {
-    background-color: #ff4d8d;
-  }
+.card-radio .desc {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    opacity: 0.9; /* Sedikit transparan agar title lebih menonjol */
+}
 </style>
-<div class="container">
-  <div class="hero-input ">
-
-    <div class="hero-title">
-      <h1>Enter Your Data</h1>
+<div class="card-radio-container">
+    
+    <!-- Card Pilihan 1 -->
+    <div class="card-radio">
+        <!-- Radio disembunyikan lewat CSS nantinya -->
+        <input type="radio" name="pilihan_paket" id="paket_standar" value="Standar" checked>
+        
+        <!-- Label bertindak sebagai Card -->
+        <label for="paket_standar">
+            <span class="title">Paket Standar</span>
+            <span class="desc">Cocok untuk penggunaan personal sehari-hari.</span>
+        </label>
     </div>
 
-    <form action="" method="POST" class="grid">
+    <!-- Card Pilihan 2 -->
+    <div class="card-radio">
+        <input type="radio" name="pilihan_paket" id="paket_premium" value="Premium">
+        <label for="paket_premium">
+            <span class="title">Paket Premium</span>
+            <span class="desc">Fitur lengkap dengan prioritas dukungan.</span>
+        </label>
+    </div>
 
-      <!-- input : Username -->
-      <div class="form-grup">
-        <label for="name">Full Name</label>
-        <input type="text" name="name" id="name" class="inputs name" placeholder="Enter Your Full Name Here" required />
-      </div>
-
-      <!-- input : Phone Number -->
-      <div class="form-grup">
-        <label for="phoneNumber">Phone Number</label>
-        <input type="tel" name="phoneNumber" id="phoneNumber" class="inputs number" placeholder="Enter Your Number Here"
-          required />
-      </div>
-
-      <!-- input : Email -->
-      <div class="form-grup">
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" class="inputs email" placeholder="Enter Your Email Here" required />
-      </div>
-
-      <!-- input : Address -->
-      <div class="form-grup">
-        <label for="address">Address</label>
-        <textarea name="address" id="address" class="inputs address" placeholder="Enter Your Address Here"
-          required></textarea>
-      </div>
-
-      <!-- input : Message -->
-      <div class="form-grup">
-        <label for="message">Message</label>
-        <textarea name="message" id="message" class="inputs message" placeholder="Enter Your Message Here"
-          required></textarea>
-      </div>
-
-      <!-- button : submit -->
-      <div class="hero-submit">
-        <button type="submit" name="update" class="btn-update"> UPDATE DATA</button>
-        <button type="button" onclick="confirmDelete()" class="btn-delete">DELETE DATA </button>
-      </div>
-
-    </form>
-  </div>
 </div>

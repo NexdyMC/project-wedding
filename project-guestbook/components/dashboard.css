@@ -111,6 +111,7 @@
   text-align: center;
 } */
 
+
 .background-1 {
   background: #d9e1d1;
   border: 2px solid #b6c1aa;
@@ -241,17 +242,14 @@
   overflow-x: auto;
   width: 100%;
   max-width: 100%;
-  /* border-radius: 10px; */
   margin: 1rem 0 0;
-  border: 1px solid #000;
+  border-radius: 10px;
   box-shadow: 0 0 1px 0 #4a3f35;
-  /* background-color: #fff6f2; */
-  background-color: #fff;
+  background: #fff;
 }
 
 td {
   padding: 5px;
-  margin: 20px;
   max-width: 120px; /* atur lebar sesuai kebutuhan */
   white-space: nowrap; /* biar gak turun baris */
   overflow: hidden;
@@ -275,10 +273,10 @@ tr:hover {
 }
 
 table {
+  border-radius: 10px;
   border-collapse: collapse;
   min-width: 600px; /* Memaksa tabel lebih lebar dari layar HP */
   overflow: hidden;
-
   width: 100%;
 }
 table tr th {
@@ -310,8 +308,8 @@ table tr td {
   font-size: 1.5rem;
   padding: 0.35em;
   background: linear-gradient(#f794a4, #fdd6bd);
-  border: 2px solid #ff85a2;
-  /* color: #fff; */
+  border: 2px solid #E98FA1;
+  color: #64172E;
 }
 .icon-circle {
   border-radius: 50%;
@@ -322,10 +320,15 @@ table tr td {
 
 .status-icon {
   padding: 0.5rem;
+  font-size: 1rem;
   border-radius: 0.5rem;
 }
 .center-only {
   margin: 0 auto;
   width: fit-content;
+}
+.text-center {
+  text-align: center;
+  margin: 10px;
 }
 /* END ATTENDANCE */

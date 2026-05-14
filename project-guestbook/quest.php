@@ -131,52 +131,49 @@ include 'app/title.php';
         
         <div class="attendance" data-aos="fade-up" data-aos-duration="2000">
           <div class="herois">
-            <!-- <h3>Quests</h3> -->
             <div class="icon ">
-                <span class="material-symbols-outlined icon-box">person</span>
-                <h2>Quests</h2>
+              <span class="material-symbols-outlined icon-box">person</span>
+              <h2>Quests</h2>
             </div>
             <a href="form.php">Add Quests <span class="material-symbols-outlined" >add</span></a>
+          </div>
             
+          <!-- panel : search data tabel -->
+          <div class="rectangle-search">
+            <div class="search">
+              <input type="text" name="keyword" id="search" placeholder="Search Name ........">
+              <button id="btn-search" >
+                <span class="material-symbols-outlined" >search</span>
+              </button>
             </div>
-
-            <div class="rectangle-search">
-              <div class="search">
-                <input type="text" name="keyword" id="search" placeholder="Search Name ........">
-                
-                <button id="btn-search" >
-                  <span class="material-symbols-outlined" >search</span>
-                </button>
-              </div>
-            </div>
-            <div class="list-attendance">
-              
-              <table border="1" cellspacing="0" cellpadding="0">
-                <thead>
-
-                  <tr>
-                    <th>Nama Tamu</th>
-                    <th>No HP</th>
-                    <th>Alamat</th>
-                    <th>Ucapan</th>
-                    <th>Keterangan</th>
-                    <th>Email</th>
-                    <th>Waktu Datang</th>
-                    <th>edit</th>
+          </div>
+          <div class="list-attendance">    
+            <table>
+              <thead>
+                <tr>
+                  <th>Nama Tamu</th>
+                  <th>No HP</th>
+                  <th>Alamat</th>
+                  <th>Ucapan</th>
+                  <th>Keterangan</th>
+                  <th>Email</th>
+                  <th>Waktu Datang</th>
+                  <th>edit</th>
                 </tr>
               </thead>
                 
               <tbody id="result">
-
                 <?php
-                  $query = mysqli_query($koneksi, "SELECT * FROM tamu");
+                  $query = mysqli_query($koneksi, "SELECT * FROM tamu ORDER BY waktu_datang DESC");
                   while ($data = mysqli_fetch_array($query)) {
+                    $status =  $data['keterangan'];
+                    $value = $status === 'hadir' ? 'Check' : ($status === 'tidak_hadir' ? 'Close' : 'Help');
                     echo "<tr>";
                     echo "<td>" . $data['nama_tamu'] . "</td>";
                     echo "<td>" . $data['no_hp'] . "</td>";
                     echo "<td>" . $data['alamat'] . "</td>";
                     echo "<td>" . $data['ucapan'] . "</td>";
-                    echo "<td>" . $data['keterangan'] . "</td>";
+                    echo "<td class=\"text-center\"> <div class=\"material-symbols-outlined status-icon\"> $value </div> </td>";
                     echo "<td>" . $data['email'] . "</td>";
                     echo "<td>" . $data['waktu_datang'] . "</td>";
                     echo "<td> <a href='edit.php?id=" . $data['id_tamu'] .
@@ -186,9 +183,8 @@ include 'app/title.php';
                     </td>";
                     }
                     ?>
-                    </tbody>
-              </table>
-            </div>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -219,6 +215,30 @@ document.getElementById("search").addEventListener("keyup", function() {
     xhr.open("GET", "search.php?keyword=" + keyword, true);
     xhr.send();
 });
+  document.addEventListener("DOMContentLoaded", function () {
+    const icons = document.querySelectorAll(".status-icon");
+
+    icons.forEach(icon => {
+      const status = icon.textContent.trim();
+
+      if (status === "Check") {
+        icon.style.color = "green";
+        icon.style.background = "#d9e1d1";
+        icon.style.border = "2px solid #b6c1aa";
+      } 
+      else if (status === "Close") {
+        icon.style.color = "red";
+        icon.style.background = "#ffbaba";
+        icon.style.border = "2px solid #f4b0b0";
+      } 
+      else {
+        icon.style.color = "black";
+        icon.style.background = "gray";
+        icon.style.border = "2px solid #b8b3b0";
+      }
+    });
+  });
+  AOS.init();
 </script>
     <!-- END AJAXX -->
   </body>

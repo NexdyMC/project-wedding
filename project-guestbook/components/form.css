@@ -21,6 +21,24 @@ body {
   flex-direction: column;
   text-align: left;
 }
+.address,
+.message {
+  height: 3rem;
+}
+
+.attendances {
+  display: flex;
+  justify-content: space-evenly;
+  border: 2px solid #4a3f35;
+  border-radius: 15px;
+  background: #FFF2DF ;
+}
+
+.hero-submit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .hero-input {
   display: flex;
@@ -53,23 +71,37 @@ span {
   border-radius: 1rem;
   background: #FFFAF3;
 }
-
-.address,
-.message {
-  height: 3rem;
-}
-
-.attendances {
-  display: flex;
-  justify-content: space-evenly;
-  border: 2px solid #4a3f35;
-  border-radius: 15px;
-  background: #FFF2DF ;
+/* Button Form */
+.form-grup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .hero-submit {
+  gap: 15px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+}
+button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 0.5rem;
+  cursor: pointer;
 }
 
+.btn-update { 
+    border: 1px solid #FF97B7;
+    background: #FFF6F8;
+    color: #F25F8F;
+    &:hover {
+        background: #F3003115;
+    }
+}
+.btn-delete { 
+    border: 1px solid #F6BECB;
+    background: #FEF7F8;
+    color: #F13F82;
+    &:hover {
+        background: #FF003924;
+    }
+}

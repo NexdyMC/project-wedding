@@ -1,0 +1,93 @@
+/* DO NOT DELETE THIS CSS CODE I WROTE THIS FREAKIN CODE ONLY BY MY SELF PLEASEEE DO NOT CHANGE OR SOMETHINGGGG
+ILL KILL YOU IF YOU DO THAT!!! ^W^ */
+
+.rectangle-messages {
+  width: 1264px;
+
+  padding: 1rem;
+  border-radius: 15px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+  background-color: #fef1eb;
+}
+
+.msg {
+  white-space: normal;
+  /* max-width: 700px; */
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  box-shadow: 0 0 5px 0 #FCBDC8;
+  background-color: #fff6f2;
+  /* box-shadow: inset 0 4px 20px rgba(0, 0, 0, 0.1); */
+  border-radius: 0.5rem;
+  overflow-y: auto;
+  scrollbar-width: none;
+  overflow-wrap: break-word;
+}
+
+.msg p {
+  text-wrap: wrap;
+  text-align: justify;
+  font-size: 1rem;
+  font-style: normal;
+}
+.rectangle-messages h1 {
+  text-align: center;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+}
+
+.messages-body {
+  overflow-y: auto;
+  scrollbar-width: none;
+  width: 100%;
+  padding: 20px;
+  height: 733px;
+  border-radius: 15px;
+  background-color: #fef1eb;
+  border: 3px solid #e8b4b8;
+}
+
+.dashboard-content {
+  scrollbar-width: none;
+}
+
+.profile-account {
+  padding-top: 1rem;
+  font-family: "Playfair Display", serif;
+  font-weight: 500;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  /* padding-left: 17px; */
+}
+
+.profile-account span {
+  font-family: "Poopins", sans-serif;
+}
+
+.person {
+  border: 1px solid palevioletred;
+  background: #ffc0cb;
+  border-radius: 20px;
+  padding: 0.5rem;
+  font-family: "Material Symbols Outlined" !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  font-size: 1.5rem;
+  display: inline-block;
+  line-height: 1;
+}
+
+@media (max-width: 460px) {
+  .rectangle-messages {
+    width: 340px;
+  }
+}

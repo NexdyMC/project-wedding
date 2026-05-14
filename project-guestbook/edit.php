@@ -27,39 +27,7 @@ if (!$data) {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         <?php include 'components/form.css'?>
-    
-       .form-grup {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-        
-        .hero-submit {
-            display: flex;
-            gap: 15px;
-        }
-        button {
-            padding: 12px;
-            border-radius: 0.5rem;
-            cursor: pointer;
-        }
 
-        .btn-update { 
-            border: 1px solid #FF97B7;
-            background: #FFF6F8;
-            color: #F25F8F;
-            &:hover {
-                background: #F3003115;
-            }
-        }
-        .btn-delete { 
-            border: 1px solid #F6BECB;
-            background: #FEF7F8;
-            color: #F13F82;
-            &:hover {
-                background: #FF003924;
-            }
-        }
     </style>
 </head>
 <body>
@@ -99,13 +67,13 @@ if (!$data) {
                 <!-- input : Address -->
                 <div class="form-grup">
                     <label for="address">Address</label >
-                    <textarea name="address" id="address" class="inputs address" placeholder="Enter Your Address Here" required><?php echo $data["nama_tamu"]?></textarea>
+                    <textarea name="address" id="address" class="inputs address" placeholder="Enter Your Address Here" required><?php echo $data["alamat"]?></textarea>
                 </div>
 
                 <!-- input : Message -->
                 <div class="form-grup">
                     <label for="message">Message</label >
-                    <textarea name="message" id="message" class="inputs message" placeholder="Enter Your Message Here" required><?php echo $data["nama_tamu"]?></textarea>
+                    <textarea name="message" id="message" class="inputs message" placeholder="Enter Your Message Here" required><?php echo $data["ucapan"]?></textarea>
                 </div>
                 
                 <!-- button : submit -->
@@ -121,11 +89,11 @@ if (!$data) {
     </div>
 
     <?php 
-include 'koneksi.php';
 
 if (isset($_POST['BtnUpdate'])) {
+
     // ambil data form
-    $id_tamu  = mysqli_real_escape_string($koneksi, $_POST['id_tamu']);
+    $id_tamu    = mysqli_real_escape_string($koneksi, $_POST['id_tamu']);
     $nama_tamu  = mysqli_real_escape_string($koneksi, $_POST['name']);
     $no_hp      = mysqli_real_escape_string($koneksi, $_POST['phoneNumber']);
     $email      = mysqli_real_escape_string($koneksi, $_POST['email']);

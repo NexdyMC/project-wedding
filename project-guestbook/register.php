@@ -1,6 +1,7 @@
 <?php
 include 'app/koneksi.php';
 include 'app/title.php'; 
+include 'cuid.php';
 
 if (isset($_POST['register'])) {
 
@@ -9,7 +10,7 @@ if (isset($_POST['register'])) {
   $password     = $_POST['password'];
 
   // Hash password biar aman
-  $password_hash = password_hash($password, PASSWORD_DEFAULT);
+  // $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
   // Cek username sudah ada atau belum
   $cek = mysqli_query($koneksi, "SELECT * FROM petugas WHERE username='$username'");
@@ -18,8 +19,8 @@ if (isset($_POST['register'])) {
       echo "<script>alert('Username sudah digunakan!');</script>";
   } else {
 
-      $query = "INSERT INTO petugas (nama_petugas, username, password) 
-                VALUES ('$nama_petugas', '$username', '$password_hash')";
+      $query = "INSERT INTO petugas (id_petugas, nama_petugas, username, password) 
+                VALUES ('$cuid', '$nama_petugas', '$username', '$password')";
 
       if (mysqli_query($koneksi, $query)) {
           echo "<script>alert('Register berhasil!'); window.location='login.php';</script>";
@@ -33,23 +34,23 @@ if (isset($_POST['register'])) {
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title><?= $title; ?></title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><?= $title; ?></title>
 
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
 
-<style>
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
-<?php include 'components/register.css'; ?>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Lato", sans-serif;
-}
+  <style>
+  @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
+  <?php include 'components/register.css'; ?>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Lato", sans-serif;
+  }
 
-</style>
+  </style>
 </head>
 
 <body>

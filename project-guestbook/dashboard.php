@@ -7,7 +7,7 @@ $d_hadir = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as total F
 $total_hadir = $d_hadir['total'];
 
 // Hitung Tidak Hadir
-$d_tidak = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as total FROM tamu WHERE keterangan='tidak_hadir'"));
+$d_tidak = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as total FROM tamu WHERE keterangan='tidak_hadir' or keterangan='belum_konfirmasi'"));
 $total_tidak = $d_tidak['total'];
 
 // Hitung Total Semua
@@ -108,7 +108,7 @@ $total_semua = $d_total['total'];
 
             <div class="list-attendance">
 
-              <table border="1" cellspacing="0" cellpadding="0">
+              <table >
                 <tr>
                   <th>Nama Tamu</th>
                   <th>No HP</th>
@@ -121,16 +121,16 @@ $total_semua = $d_total['total'];
                 </tr>
 
                 <?php
-                  $query = mysqli_query($koneksi, "SELECT * FROM tamu");
+                  $query = mysqli_query($koneksi, "SELECT * FROM tamu ORDER BY waktu_datang DESC");
                   while ($data = mysqli_fetch_array($query)) {
                     $status =  $data['keterangan'];
-                     $value = $status === 'hadir' ? 'Check' : ($status === 'tidak_hadir' ? 'Close' : 'Help');
+                    $value = $status === 'hadir' ? 'Check' : ($status === 'tidak_hadir' ? 'Close' : 'Help');
                     echo "<tr>";
                     echo "<td>" . $data['nama_tamu'] . "</td>";
                     echo "<td>" . $data['no_hp'] . "</td>";
                     echo "<td>" . $data['alamat'] . "</td>";
                     echo "<td>" . $data['ucapan'] . "</td>";
-                    echo "<td class=\"material-symbols-outlined status-icon \">" . $value . "</td>";
+                    echo "<td class=\"text-center\"> <div class=\"material-symbols-outlined status-icon\"> $value </div> </td>";
                     echo "<td>" . $data['email'] . "</td>";
                     echo "<td>" . $data['waktu_datang'] . "</td>";
                     echo "<td> <a href='edit.php?id=" . $data['id_tamu'] .
