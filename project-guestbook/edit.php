@@ -2,6 +2,11 @@
 include 'app/koneksi.php';
 include 'app/title.php';
 
+session_start();
+if (isset($_SESSION['login'])) {
+  header('location: dashboard.php');
+}
+
 
 if (!isset($_GET['id'])) {
     header("Location: dashboard.php");

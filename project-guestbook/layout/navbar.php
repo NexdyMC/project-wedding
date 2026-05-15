@@ -7,7 +7,10 @@
   <img src="person.jpg" width="120" height="120" />
   <p>Welcome</p>
   <h2>
-    <?php echo $_SESSION['username'] ?? 'Guest'; ?>
+    <?php
+      
+      echo $_SESSION['username'] ?? 'Guest'; 
+    ?>
   </h2>
 </div>
 
@@ -28,7 +31,7 @@
     </a>
   </li>
   <li data-aos="fade-left" data-aos-duration="1600">
-    <a href="login.php">
+    <a href="logout.php">
       <span class="material-symbols-outlined">logout</span>logout
     </a>
   </li>

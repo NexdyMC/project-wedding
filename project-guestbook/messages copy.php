@@ -1,6 +1,10 @@
 <?php
 include 'app/koneksi.php';
 include 'app/title.php';
+session_start();
+if (!isset($_SESSION['login'])) {
+  header('location: login.php');
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -20,7 +24,7 @@ include 'app/title.php';
       <?php include "components/dashboard.css"; include "components/messages copy.css"; ?>
     </style>
   </head>
-  <body>;
+  <body>
     <main class="dashboard-container">
       <!-- dashboard : header -->
       <div class="dashboard-header">

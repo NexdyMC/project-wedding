@@ -1,6 +1,10 @@
 <?php
 include 'app/koneksi.php';
 include 'app/title.php';
+session_start();
+if (!isset($_SESSION['login'])) {
+  header('location: login.php');
+}
 
 // Hitung Hadir
 $d_hadir = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as total FROM tamu WHERE keterangan='hadir'"));

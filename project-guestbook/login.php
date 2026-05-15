@@ -3,17 +3,24 @@ include 'app/koneksi.php';
 include 'app/title.php';
 
 session_start();
+if (isset($_SESSION['login'])) {
+  header('location: dashboard.php');
+}
+  
+  
 $warning = "";
-if (isset($_POST['submit'])) {
-
+if (isset($_POST['submit'])) {  
   $username = $_POST['username'];
   $password = $_POST['password'];
-
+  
   $query = mysqli_query($koneksi, "SELECT * FROM $tb_petugas WHERE username='$username' and password='$password'");
   $data = mysqli_fetch_assoc($query);
-
+  
   if ($data) {
-    header("Location: dashboard.php");
+    $_SESSION['login'] = true;
+    $_SESSION['username'] = $data['nama_petugas'];
+    $_SESSION['id_petugas'] = $data['id_petugas'];
+    header('location: dashboard.php');
   } else {
     $warning =  "<div class=\"info-warning\"> Username tidak ditemukan!</div>";
   }
