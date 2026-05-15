@@ -2,11 +2,6 @@
 include 'app/koneksi.php';
 include 'app/title.php';
 
-session_start();
-if (isset($_SESSION['login'])) {
-  header('location: dashboard.php');
-}
-
 
 if (!isset($_GET['id'])) {
     header("Location: dashboard.php");
@@ -87,19 +82,19 @@ if (!$data) {
                     <div class="form-radio">
                         <!-- Card Pilihan 1 -->
                         <div class="card-radio status-hadir">
-                            <input type="radio" name="keterangan" id="status-hadir" value="hadir" <?php echo $data["keterangan"] == "hadir" ?? "checked" ?>>
+                            <input type="radio" name="keterangan" id="status-hadir" value="hadir">
                             <label for="status-hadir"> Hadir</label>
                         </div>
     
                         <!-- Card Pilihan 2 -->
                         <div class="card-radio status-tidak_hadir">
-                            <input type="radio" name="keterangan" id="status-tidak_hadir" value="tidak_hadir" <?php echo $data["keterangan"] == "tidak_hadir" ?? "checked" ?>>
+                            <input type="radio" name="keterangan" id="status-tidak_hadir" value="tidak_hadir">
                             <label for="status-tidak_hadir"> Tidak Hadir </label>
                         </div>
     
                         <!-- Card Pilihan 3 -->
                         <div class="card-radio status-belum_konfirmasi">
-                            <input type="radio" name="keterangan" id="status-belum_konfirmasi" value="belum_konfirmasi" <?php echo $data["keterangan"] == "belum_konfirmasi" ?? "checked" ?>>
+                            <input type="radio" name="keterangan" id="status-belum_konfirmasi" value="belum_konfirmasi">
                             <label for="status-belum_konfirmasi"> Belum Konfirmasi </label>
                         </div>
                     </div>
@@ -127,8 +122,8 @@ if (isset($_POST['BtnUpdate'])) {
     $no_hp      = mysqli_real_escape_string($koneksi, $_POST['phoneNumber']);
     $email      = mysqli_real_escape_string($koneksi, $_POST['email']);
     $alamat     = mysqli_real_escape_string($koneksi, $_POST['address']);
-    $ucapan     = $_POST['message'];
-    $keterangan = $_POST['keterangan'];
+    $ucapan     = mysqli_real_escape_string($koneksi, $_POST['message']);
+    $keterangan = mysqli_real_escape_string($koneksi, $_POST['keterangan']);
 
 
     // validasi sederhana
@@ -174,9 +169,7 @@ if (isset($_POST['BtnUpdate'])) {
 
         background: '#FFF6F8',
         color: '#5f4b53',
-
         confirmButtonColor: '#ff6b9a',
-
         confirmButtonText: 'Done',
 
         showClass: {

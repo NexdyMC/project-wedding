@@ -22,8 +22,7 @@
   align-items: center;
   justify-content: center;
   padding: 10px 20px;
-  border-bottom: 1px solid gray;
-  /* position: relative; */
+  border-bottom: 2px solid #f4b0b0;
 }
 
 .burger {
@@ -95,7 +94,7 @@
   padding: 1rem;
   border-radius: 1rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  transition-duration: 0.5s;
+  transition-duration: .5s;
 
   &:hover {
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
@@ -103,17 +102,17 @@
   }
 }
 
-.background-1 {
+.rectangle-green {
   background: #d9e1d1;
   border: 2px solid #b6c1aa;
 }
-.background-2 {
+.rectangle-red {
   background: #ffbaba;
-  border: 2px solid #f4b0b0;
+  border: 2px solid #E98FA1;
 }
-.background-3 {
+.rectangle-gray {
   background: #fff6f2;
-  border: 2px solid #b8b3b0;
+  border: 2px solid #808080;
 }
 
 /* OVERLAY */
@@ -171,7 +170,7 @@
     z-index: 999;
   }
 
-  .dashboard-navbar.active {
+  .dashboard-navbar .active {
     left: 0;
   }
 
@@ -224,14 +223,19 @@
   }
 }
 
+.item-keterangan {
+  display: flex;
+  align-items: center;
+}
 
 
-/* tabel  */
+
+/* TABLE  */
 .list-attendance {
   overflow-x: auto;
   width: 100%;
   max-width: 100%;
-  margin: 1rem 0 0;
+  margin: 1rem 0;
   border-radius: 10px;
   box-shadow: 0 0 1px 0 #4a3f35;
   background: #fff;
@@ -299,7 +303,7 @@ table tr td {
   border-radius: 0.5rem;
   font-size: 1.5rem;
   padding: 0.35em;
-  background: linear-gradient(#f794a4, #fdd6bd);
+  background: linear-gradient(90deg, #f794a4, #ffbaba);
   border: 2px solid #E98FA1;
   color: #64172E;
 }
@@ -312,6 +316,7 @@ table tr td {
 
 .status-icon {
   padding: 0.25rem;
+  margin: 0.5rem;
   font-size: 1rem;
   border-radius: 0.5rem;
 }

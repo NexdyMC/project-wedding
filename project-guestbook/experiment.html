@@ -1,80 +1,104 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Editor | My Website</title>
+<style>
+body {
+  background-color: #121212;
+  color: #ffffff;
+  font-family: sans-serif;
+  padding: 20px;
+}
 
-    <style>
-        body{
-            font-family: Arial;
-            padding: 20px;
-        }
+#inputPencarian {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background-color: #1e1e1e;
+  color: #fff;
+  outline: none;
+}
 
-        textarea{
-            width: 100%;
-            height: 300px;
-            padding: 10px;
-            font-size: 16px;
-        }
+#inputPencarian:focus {
+  border-color: #646cff;
+}
 
-        button{
-            padding: 10px 20px;
-            margin-bottom: 15px;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
+.search-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+}
 
-    <h1>Realtime Code Sender</h1>
+.item-kotak {
+  padding: 15px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+  border: 1px solid #333;
+  transition: opacity 0.2s ease-in-out;
+}
 
-    <button onclick="sendCode()">
-        Open Popup
-    </button>
+.item-kotak h3 {
+  margin: 0 0 5px 0;
+  font-size: 18px;
+}
 
+.item-kotak p {
+  margin: 0;
+  font-size: 14px;
+  color: #aaa;
+}
+</style>
 
-    <textarea id="editor">
-<h1>Hello World</h1>
-<p>Realtime BroadcastChannel</p>
-    </textarea>
+<!-- Input pencarian -->
+<input type="text" id="inputPencarian" placeholder="Cari nama atau divisi...">
 
-    <script>
+<!-- Container pencarian -->
+<div class="search-content">
+  <!-- Kotak-kotak yang akan dicari -->
+  <div class="item-kotak">
+    <h3>Asep Sumantri</h3>
+    <p>Divisi Multimedia</p>
+  </div>
+  
+  <div class="item-kotak">
+    <h3>Siti Aminah</h3>
+    <p>Divisi Jurnalistik</p>
+  </div>
+  
+  <div class="item-kotak">
+    <h3>Budi Santoso</h3>
+    <p>Divisi Humas</p>
+  </div>
+  
+  <div class="item-kotak">
+    <h3>Rina Melati</h3>
+    <p>Divisi Multimedia</p>
+  </div>
+</div>
 
-        // buat channel global
-        const channel = new BroadcastChannel("codeChannel");
+<script>
+    // 1. Ambil elemen input dan semua kotak di dalam search-content
+const inputSearch = document.getElementById('inputPencarian');
+const items = document.querySelectorAll('.search-content .item-kotak');
 
-        let popupOpened = false;
+// 2. Tambahkan event listener saat user mengetik
+inputSearch.addEventListener('input', function(e) {
+  // Ubah input menjadi huruf kecil agar pencarian tidak case-sensitive
+  const keyword = e.target.value.toLowerCase();
 
-        function sendCode(){
+  // 3. Lakukan perulangan untuk mengecek setiap kotak
+  items.forEach(function(item) {
+    // Ambil seluruh teks di dalam kotak tersebut
+    const textItem = item.textContent.toLowerCase();
 
-            // supaya popup tidak terbuka berkali-kali
-            if(!popupOpened){
-
-                window.open(
-                    "login.php",
-                    "Preview Window",
-                    "width=700,height=500"
-                );
-                popupOpened = true;
-            }
-
-            const code = document.getElementById("editor");
-
-            // kirim pertama kali
-            channel.postMessage(code.value);
-
-            // realtime saat mengetik
-            code.addEventListener("input", () => {
-
-                channel.postMessage(code.value);
-
-                console.log("Code terkirim");
-
-            });
-
-        }
-function closeWindow(){window.close();}
-    </script>
-
-</body>
-</html>
+    // 4. Logika pencocokan
+    if (textItem.includes(keyword)) {
+      // Jika cocok, tampilkan kotaknya
+      item.style.display = 'block'; 
+    } else {
+      // Jika tidak cocok, sembunyikan kotaknya
+      item.style.display = 'none';  
+    }
+  });
+});
+</script>

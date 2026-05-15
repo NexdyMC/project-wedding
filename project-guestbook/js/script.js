@@ -5,7 +5,7 @@ function toggleMenu() {
     document.getElementById("overlay").classList.toggle("active");
 }
 
-document.getElementById("search").addEventListener("keyup", function() {
+document.getElementById("search").addEventListener("input", function() {
     let keyword = this.value;
 
     let xhr = new XMLHttpRequest();

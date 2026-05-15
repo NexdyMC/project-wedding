@@ -12,11 +12,11 @@ $alert_status = ""; // Variabel khusus untuk trigger SweetAlert
 if (isset($_POST['submit'])) {
 
     // 3. Keamanan: Bersihkan input dari karakter berbahaya (Anti SQL Injection & XSS)
-    $nama_tamu =  htmlspecialchars($_POST['name']);
-    $no_hp     =  htmlspecialchars($_POST['phoneNumber']);
-    $alamat    =  htmlspecialchars($_POST['address']);
-    $ucapan    =  htmlspecialchars($_POST['message']);
-    $email     =  htmlspecialchars($_POST['email']);
+    $nama_tamu =  mysqli_real_escape_string($koneksi, $_POST['name']);
+    $no_hp     =  mysqli_real_escape_string($koneksi, $_POST['phoneNumber']);
+    $alamat    =  mysqli_real_escape_string($koneksi, $_POST['address']);
+    $ucapan    =  mysqli_real_escape_string($koneksi, $_POST['message']);
+    $email     =  mysqli_real_escape_string($koneksi, $_POST['email']);
     
     // 4. Logika Waktu & Kehadiran
     $waktu_datang   = date('Y-m-d H:i:s');

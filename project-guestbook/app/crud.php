@@ -1,14 +1,10 @@
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <?php
 include 'koneksi.php';
-session_start();
-if (isset($_SESSION['login'])) {
-  header('location: dashboard.php');
-}
-
 
 $id_tamu = $_GET["id"];
 
-$query = mysqli_query($koneksi, "DELETE FROM $tb_tamu   WHERE `id_tamu`='$id_tamu'");
+$query = mysqli_query($koneksi, "DELETE FROM $tb_tamu    WHERE `id_tamu`='$id_tamu'");
 $query = mysqli_query($koneksi, "DELETE FROM $tb_petugas WHERE `id_petugas`='$id_tamu'");
 
 if ($query) {
@@ -18,3 +14,25 @@ if ($query) {
 }
 
 ?>
+
+
+<script>
+<?php if ($query) {?>
+    Swal.fire({
+        title: "!",
+        text: "Data berhasil ",
+        icon: "success"
+    }).then(() => {
+        window.location.href = '../dashboard.php';
+    });
+<?php } else {?>
+    Swal.fire({
+        title: "!",
+        text: "Data gagal dibapus ",
+        icon: "error"
+    }).then(() => {
+        window.location.href = '../dashboard.php';
+    });
+<?php } ?>
+
+</script>

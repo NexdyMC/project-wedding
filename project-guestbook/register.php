@@ -7,10 +7,7 @@ if (isset($_POST['register'])) {
 
   $nama_petugas = mysqli_real_escape_string($koneksi, $_POST['nama_petugas']);
   $username     = mysqli_real_escape_string($koneksi, $_POST['username']);
-  $password     = $_POST['password'];
-
-  // Hash password biar aman
-  // $password_hash = password_hash($password, PASSWORD_DEFAULT);
+  $password     = mysqli_real_escape_string($koneksi, $_POST['password']);
 
   // Cek username sudah ada atau belum
   $cek = mysqli_query($koneksi, "SELECT * FROM $tb_petugas WHERE username='$username'");
@@ -19,7 +16,7 @@ if (isset($_POST['register'])) {
       echo "<script>alert('Username sudah digunakan!');</script>";
   } else {
 
-      $query = "INSERT INTO petugas (id_petugas, nama_petugas, username, password) 
+      $query = "INSERT INTO $tb_petugas (id_petugas, nama_petugas, username, password) 
                 VALUES ('$cuid', '$nama_petugas', '$username', '$password')";
 
       if (mysqli_query($koneksi, $query)) {

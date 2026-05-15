@@ -31,6 +31,7 @@ $total_semua = $d_total['total'];
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
       <?php include "components/dashboard.css";?>
@@ -61,12 +62,12 @@ $total_semua = $d_total['total'];
           <h4 class="animate__animated animate__fadeInDown">Welcome back, User!!</h4>
           <p class="animate__animated animate__fadeInDown">Here's an overview of the wedding attendance</p>
 
-          <div class="card-container">
-            <div class="rectangle background-1" data-aos="fade-up" data-aos-duration="3000"
-              data-aos-anchor-placement="center-center">
+          <div class="card-container" data-aos="fade-up">
+            
+            <!-- card : hadir -->
+            <div class="rectangle rectangle-green"  data-aos-duration="1000" data-aos-anchor-placement="center-center">
               <div class="card-title">
                 <div class="icon">
-
                   <span class="material-symbols-outlined icon-circle">check</span>
                   <h3>Attend</h3>
                 </div>
@@ -74,8 +75,8 @@ $total_semua = $d_total['total'];
               </div>
             </div>
 
-            <div class="rectangle background-2" data-aos="fade-up" data-aos-duration="3000"
-            data-aos-anchor-placement="center-center">
+            <!-- card : tidak hadir -->
+            <div class="rectangle rectangle-red"  data-aos-duration="1000" data-aos-anchor-placement="center-center">
               <div class="card-title">
                 <div class="icon">
                   <span class="material-symbols-outlined icon-circle">close</span>
@@ -85,7 +86,8 @@ $total_semua = $d_total['total'];
               </div>
             </div>
 
-            <div class="rectangle background-3" data-aos="fade-up" data-aos-duration="3000" data-aos-anchor-placement="center-center">
+            <!-- card : belun konfirmasi -->
+            <div class="rectangle rectangle-gray"  data-aos-duration="1000" data-aos-anchor-placement="center-center">
               <div class="card-title">
                 <div class="icon">
                   <span class="material-symbols-outlined icon-circle">person</span>
@@ -97,7 +99,7 @@ $total_semua = $d_total['total'];
           </div>
 
           <!-- Buku Tamu -->
-          <div class="attendance" data-aos="fade-up" data-aos-duration="3000">
+          <div class="attendance" data-aos="fade-up" data-aos-duration="1000">
               <div class="attendance-header">
               <div class="icon">
                   <span class="material-symbols-outlined icon-box">history</span>
@@ -139,8 +141,7 @@ $total_semua = $d_total['total'];
                     <span class='material-symbols-outlined icon'>edit</span>
                     </a>
                     </td>";
-                    echo "<td> <a href='app/crud.php?id=" . $data['id_tamu'] .
-                    "'class='icon-edit'  style='display: flex; justify-content: center;'>
+                    echo "<td> <a href='app/crud.php?id=" . $data['id_tamu'] . "'class='icon-edit btn-delete'  style='display: flex; justify-content: center;'>
                     <span class='material-symbols-outlined icon'>delete</span>
                     </a>
                     </td>";
@@ -148,26 +149,39 @@ $total_semua = $d_total['total'];
                   ?>
               </table>
             </div>
+            
+            <h3>Keterangan</h3>
+            <div class="item-keterangan">
+              <div class="material-symbols-outlined status-icon">Check</div> 
+              <p>Hadir</p>
+            
+              <div class="material-symbols-outlined status-icon">Close</div> 
+              <p>Tidak Hadir</p>
+            
+              <div class="material-symbols-outlined status-icon">Help</div> 
+              <p>Belum Konfirmasi</p>
+            </div>
+
           </div>
 
           <!-- Akun Admin -->
           <div class="attendance"  data-aos-duration="1000">
               <div class="attendance-header">
-              <div class="icon">
-                  <span class="material-symbols-outlined icon-box">history</span>
-                  <h2>Admin Attendance</h2>
+                <div class="icon">
+                    <span class="material-symbols-outlined icon-box">history</span>
+                    <h2>Admin Attendance</h2>
+                </div>
+                <a href="view.php">View All<span class="material-symbols-outlined">expand_content</span></a>
               </div>
-              <a href="view.php">View All<span class="material-symbols-outlined">expand_content</span></a>
-            </div>
 
             <div class="list-attendance">
-
-              <table >
+              
+              <!-- table petugas -->
+              <table>
                 <tr>
-                  <th>uid Petugas</th>
+                  <th>UID Petugas</th>
                   <th>Nama Petugas</th>
                   <th>Username</th>
-
                   <th>Password</th>
                   <th>Edit</th>
                   <th>Delete</th>
@@ -182,13 +196,12 @@ $total_semua = $d_total['total'];
                     echo "<td>" . $data['username'] . "</td>";
                     echo "<td>" . $data['password'] . "</td>";
                     // echo "<td>" . $data['ucapan'] . "</td>";
-                    echo "<td> <a href='edit.php?id=" . $data['id_petugas'] .
+                    echo "<td> <a href='edit_admin.php?id=" . $data['id_petugas'] .
                     "'class='icon-edit'  style='display: flex; justify-content: center;'>
                     <span class='material-symbols-outlined icon'>edit</span>
                     </a>
                     </td>";
-                    echo "<td> <a href='app/crud.php?id=" . $data['id_petugas'] .
-                    "'class='icon-edit'  style='display: flex; justify-content: center;'>
+                    echo "<td> <a href='app/crud.php?id=" . $data['id_petugas'] . "'class='icon-edit btn-delete' style='display: flex; justify-content: center;'>
                     <span class='material-symbols-outlined icon'>delete</span>
                     </a>
                     </td>";
@@ -197,24 +210,46 @@ $total_semua = $d_total['total'];
               </table>
             </div>
           </div>
-
         </div>
       </div>
     </main>
     
 
-    <script>
-      function toggleMenu() {
-        document.getElementById("sidebar").classList.toggle("active");
-        document.getElementById("overlay").classList.toggle("active");
-      }
-    </script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  const tombolHapus = document.querySelectorAll('.btn-delete');
+
+  tombolHapus.forEach(tombol => {
+    tombol.addEventListener('click', function (e) {      
+      e.preventDefault();
+
+      const urlTarget = this.getAttribute('href');
+
+      Swal.fire({
+        title: 'Apakah kamu yakin?',
+        text: "Data ini akan dihapus secara permanen!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        confirmButtonText: 'Ya, Hapus!',
+        cancelButtonColor: '#3085d6',
+        cancelButtonText: 'Batal'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = urlTarget;
+        }
+      })
+    });
+  });
+
+  function toggleMenu() {
+    document.getElementById("sidebar").classList.toggle("active");
+    document.getElementById("overlay").classList.toggle("active");
+  }
 
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-  AOS.init();
-
+  // mengubah background, warna, dan border pada icon sesuai dengan status 
   document.addEventListener("DOMContentLoaded", function () {
     const icons = document.querySelectorAll(".status-icon");
 
@@ -225,19 +260,17 @@ $total_semua = $d_total['total'];
         icon.style.color = "green";
         icon.style.background = "#d9e1d1";
         icon.style.border = "2px solid #b6c1aa";
-      } 
-      else if (status === "Close") {
+      } else if (status === "Close") {
         icon.style.color = "red";
         icon.style.background = "#ffbaba";
-        icon.style.border = "2px solid #f4b0b0";
-      } 
-      else {
-      icon.style.color = "#202020";
-      icon.style.background = "#b8b3b0";
-      icon.style.border = "2px solid #808080";
+        icon.style.border = "2px solid #E98FA1";
+      } else {
+        icon.style.color = "#202020";
+        icon.style.background = "#b8b3b0";
+        icon.style.border = "2px solid #808080";
       }
     });
-  });
+  }); 
     </script>
   </body>
 </html>

@@ -14,9 +14,7 @@ if (!isset($_SESSION['login'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><?= $title ?></title>
     <!-- everything default and using `weight: 100` -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />    
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <style>
       <?php include "components/dashboard.css"; include 'components/quest.css'; ?>
@@ -46,7 +44,7 @@ if (!isset($_SESSION['login'])) {
       <div class="dashboard-content">
         <div class="content">
 
-          <!-- <div class="attendance" data-aos="fade-up" data-aos-duration="2000"> -->
+          <div class="attendance" data-aos="fade-up" data-aos-duration="2000">
             <div class="herois">
               <div class="icon">
                 <span class="material-symbols-outlined icon-box">person</span>
@@ -58,7 +56,7 @@ if (!isset($_SESSION['login'])) {
             <!-- panel : search data tabel -->
             <div class="rectangle-search">
               <div class="search">
-                <input type="text" name="keyword" id="search" placeholder="Search Name ........">
+                <input type="text" name="keyword" id="input-search" placeholder="Search Name ........">
                 <button id="btn-search">
                   <span class="material-symbols-outlined">search</span>
                 </button>
@@ -100,12 +98,12 @@ if (!isset($_SESSION['login'])) {
                       <span class='material-symbols-outlined icon'>edit</span>
                       </a>
                       </td>";
-                      }
-                      ?>
+                    }
+                  ?>
                 </tbody>
               </table>
             </div>
-          <!-- </div> -->
+          </div>
         </div>
       </div>
     </main>
@@ -118,19 +116,20 @@ if (!isset($_SESSION['login'])) {
           document.getElementById("overlay").classList.toggle("active");
       }
 
-      document.getElementById("search").addEventListener("keyup", function() {
-        let keyword = this.value;
+      document.getElementById("input-search").addEventListener("input", function() {
+          let keyword = this.value;
 
-        let xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("result").innerHTML = this.responseText;
-            }
-        };
+          let xhr = new XMLHttpRequest();
+          xhr.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                  document.getElementById("result").innerHTML = this.responseText;
+              }
+          };
 
-        xhr.open("GET", "search.php?keyword=" + keyword, true);
-        xhr.send();
-    });
+          xhr.open("GET", "search.php?keyword=" + keyword, true);
+          xhr.send();
+      });
+
       document.addEventListener("DOMContentLoaded", function () {
         const icons = document.querySelectorAll(".status-icon");
 
