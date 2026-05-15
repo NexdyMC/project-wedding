@@ -17,18 +17,16 @@ $total_semua = $d_total['total'];
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <title><?= $title ?></title>
-
+    
     <!-- everything default and using `weight: 100` -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-
-    
 
     <style>
       <?php include "components/dashboard.css";?>
@@ -48,13 +46,10 @@ $total_semua = $d_total['total'];
       </div>
 
 
-      <!-- OVERLAY -->
-      <!-- <div class="overlay" id="overlay" onclick="toggleMenu()"></div> -->
-
       <!-- CONTENT -->
       <div class="dashboard-content">
         <div class="content ">
-          <div class="icon animate__animated animate__fadeInDown">
+          <div class="icon animate__animated animate__fadeInDown" data-aos="fade-down" >
               <span class="material-symbols-outlined icon-box">home</span>
               <h2 class="animate__animated animate__fadeInDown">Dashboard</h2>
           </div>
@@ -97,6 +92,7 @@ $total_semua = $d_total['total'];
             </div>
           </div>
 
+          <!-- Buku Tamu -->
           <div class="attendance" data-aos="fade-up" data-aos-duration="3000">
               <div class="attendance-header">
               <div class="icon">
@@ -113,15 +109,16 @@ $total_semua = $d_total['total'];
                   <th>Nama Tamu</th>
                   <th>No HP</th>
                   <th>Alamat</th>
-                  <th>Ucapan</th>
+                  <!-- <th>Ucapan</th> -->
                   <th>Keterangan</th>
                   <th>Email</th>
                   <th>Waktu Datang</th>
-                  <th>edit</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
                 </tr>
 
                 <?php
-                  $query = mysqli_query($koneksi, "SELECT * FROM tamu ORDER BY waktu_datang DESC");
+                  $query = mysqli_query($koneksi, "SELECT * FROM $tb_tamu ORDER BY waktu_datang DESC");
                   while ($data = mysqli_fetch_array($query)) {
                     $status =  $data['keterangan'];
                     $value = $status === 'hadir' ? 'Check' : ($status === 'tidak_hadir' ? 'Close' : 'Help');
@@ -129,7 +126,7 @@ $total_semua = $d_total['total'];
                     echo "<td>" . $data['nama_tamu'] . "</td>";
                     echo "<td>" . $data['no_hp'] . "</td>";
                     echo "<td>" . $data['alamat'] . "</td>";
-                    echo "<td>" . $data['ucapan'] . "</td>";
+                    // echo "<td>" . $data['ucapan'] . "</td>";
                     echo "<td class=\"text-center\"> <div class=\"material-symbols-outlined status-icon\"> $value </div> </td>";
                     echo "<td>" . $data['email'] . "</td>";
                     echo "<td>" . $data['waktu_datang'] . "</td>";
@@ -138,11 +135,65 @@ $total_semua = $d_total['total'];
                     <span class='material-symbols-outlined icon'>edit</span>
                     </a>
                     </td>";
+                    echo "<td> <a href='app/crud.php?id=" . $data['id_tamu'] .
+                    "'class='icon-edit'  style='display: flex; justify-content: center;'>
+                    <span class='material-symbols-outlined icon'>delete</span>
+                    </a>
+                    </td>";
                   }
                   ?>
               </table>
             </div>
           </div>
+
+          <!-- Akun Admin -->
+          <div class="attendance"  data-aos-duration="1000">
+              <div class="attendance-header">
+              <div class="icon">
+                  <span class="material-symbols-outlined icon-box">history</span>
+                  <h2>Admin Attendance</h2>
+              </div>
+              <a href="view.php">View All<span class="material-symbols-outlined">expand_content</span></a>
+            </div>
+
+            <div class="list-attendance">
+
+              <table >
+                <tr>
+                  <th>uid Petugas</th>
+                  <th>Nama Petugas</th>
+                  <th>Username</th>
+
+                  <th>Password</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                </tr>
+
+                <?php
+                  $query = mysqli_query($koneksi, "SELECT * FROM $tb_petugas ");
+                  while ($data = mysqli_fetch_array($query)) {
+                    echo "<tr>";
+                    echo "<td>" . $data['id_petugas'] . "</td>";
+                    echo "<td>" . $data['nama_petugas'] . "</td>";
+                    echo "<td>" . $data['username'] . "</td>";
+                    echo "<td>" . $data['password'] . "</td>";
+                    // echo "<td>" . $data['ucapan'] . "</td>";
+                    echo "<td> <a href='edit.php?id=" . $data['id_petugas'] .
+                    "'class='icon-edit'  style='display: flex; justify-content: center;'>
+                    <span class='material-symbols-outlined icon'>edit</span>
+                    </a>
+                    </td>";
+                    echo "<td> <a href='app/crud.php?id=" . $data['id_petugas'] .
+                    "'class='icon-edit'  style='display: flex; justify-content: center;'>
+                    <span class='material-symbols-outlined icon'>delete</span>
+                    </a>
+                    </td>";
+                  }
+                  ?>
+              </table>
+            </div>
+          </div>
+
         </div>
       </div>
     </main>
@@ -157,39 +208,32 @@ $total_semua = $d_total['total'];
 
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-      <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const icons = document.querySelectorAll(".status-icon");
+    <script>
+  AOS.init();
 
-        icons.forEach(icon => {
-          const status = icon.textContent.trim();
+  document.addEventListener("DOMContentLoaded", function () {
+    const icons = document.querySelectorAll(".status-icon");
 
-          if (status === "Check") {
-            icon.style.color = "green";
-            icon.style.background = "#d9e1d1";
-            icon.style.border = "2px solid #b6c1aa";
-          } 
-          else if (status === "Close") {
-            icon.style.color = "red";
-            icon.style.background = "#ffbaba";
-            icon.style.border = "2px solid #f4b0b0";
-          } 
-          else {
-            icon.style.color = "black";
-            icon.style.background = "gray";
-            icon.style.border = "2px solid #b8b3b0";
-          }
-        });
-      });
-      AOS.init();
+    icons.forEach(icon => {
+      const status = icon.textContent.trim();
+
+      if (status === "Check") {
+        icon.style.color = "green";
+        icon.style.background = "#d9e1d1";
+        icon.style.border = "2px solid #b6c1aa";
+      } 
+      else if (status === "Close") {
+        icon.style.color = "red";
+        icon.style.background = "#ffbaba";
+        icon.style.border = "2px solid #f4b0b0";
+      } 
+      else {
+      icon.style.color = "#202020";
+      icon.style.background = "#b8b3b0";
+      icon.style.border = "2px solid #808080";
+      }
+    });
+  });
     </script>
-<!-- ANIME JS -->
-
-
-
-<!-- END ANIME JS -->
-    <!-- <script>
-      window.print()
-    </script> -->
   </body>
 </html>

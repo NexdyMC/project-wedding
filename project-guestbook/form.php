@@ -3,7 +3,7 @@
 date_default_timezone_set('Asia/Jakarta');
 include 'app/koneksi.php';
 include 'app/title.php';
-include 'cuid.php';
+include 'app/cuid.php';
 
 $alert_status = ""; // Variabel khusus untuk trigger SweetAlert
 
@@ -20,17 +20,17 @@ if (isset($_POST['submit'])) {
     // 4. Logika Waktu & Kehadiran
     $waktu_datang   = date('Y-m-d H:i:s');
     $waktu_sekarang = strtotime(date('H:i:s'));
-    $batas_waktu    = strtotime("23:30:00");
+    $batas_waktu    = strtotime("11:30:00");
     
     // Gunakan variabel $keterangan agar tidak bentrok dengan alert
-    if ($waktu_sekarang > $batas_waktu) {
+    if ($waktu_sekarang < $batas_waktu) {
         $keterangan = "hadir";
     } else {
         $keterangan = "tidak_hadir";
     }
 
     // 5. Eksekusi Database
-    $query = "INSERT INTO tamu 
+    $query = "INSERT INTO $tb_tamu 
               (id_tamu, nama_tamu, no_hp, alamat, ucapan, keterangan, email, waktu_datang) 
               VALUES 
               ('$cuid', '$nama_tamu', '$no_hp', '$alamat', '$ucapan', '$keterangan', '$email', '$waktu_datang')";
@@ -73,7 +73,7 @@ if (isset($_POST['submit'])) {
         <h1>Enter Your Data</h1>
       </div>
 
-      <form action="" method="POST" class="grid">
+      <form method="POST" class="grid">
 
         <div class="form-grup">
           <label for="name">Full Name</label>

@@ -9,7 +9,7 @@ if (!isset($_GET['id'])) {
 }
 
 $id = intval($_GET['id']);
-$result = mysqli_query($koneksi, "SELECT * FROM tamu WHERE id_tamu = $id");
+$result = mysqli_query($koneksi, "SELECT * FROM $tb_tamu WHERE id_tamu = $id");
 $data = mysqli_fetch_assoc($result);
 
 if (!$data) {
@@ -25,55 +25,79 @@ if (!$data) {
     <title><?= $title ?> </title>
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
     <style>
         <?php include 'components/form.css'?>
-
     </style>
 </head>
 <body>
     <div class="container">
         <div class="hero-input ">
             <div class="hero-title">
-                <h1>Enter Your Data</h1>
+                <h1>Update Your Data</h1>
             </div>
 
             <?php 
             $id = $_GET['id'];
-            $query = mysqli_query($koneksi, "SELECT * FROM tamu WHERE id_tamu = '$id'; ");
+            $query = mysqli_query($koneksi, "SELECT * FROM $tb_tamu WHERE id_tamu = '$id'; ");
             while ($data = mysqli_fetch_assoc($query)) {
             ?>
 
-            <form action="" method="POST" class="grid">
+            <form method="POST" class="grid">
                 
-                <input type="hidden" name="id_tamu" value="<?php echo $id?>">
+                <input type="hidden" name="id_tamu" value="<?= $id?>">
                 <!-- input : Username -->   
                 <div class="form-grup">
                     <label for="name">Full Name</label >
-                    <input type="text" name="name" value="<?php echo $data["nama_tamu"]?>" id="name" class="inputs name" placeholder="Enter Your Full Name Here" required />
+                    <input type="text" name="name" value="<?= $data["nama_tamu"]?>" id="name" class="inputs name" placeholder="Enter Your Full Name Here" required />
                 </div>
 
                 <!-- input : Phone Number -->
                 <div class="form-grup">
                     <label for="phoneNumber">Phone Number</label >
-                    <input type="tel" name="phoneNumber" value="<?php echo $data["no_hp"]?>" id="phoneNumber" class="inputs number" placeholder="Enter Your Number Here" required />
+                    <input type="tel" name="phoneNumber" value="<?= $data["no_hp"]?>" id="phoneNumber" class="inputs number" placeholder="Enter Your Number Here" required />
                 </div>
                 
                 <!-- input : Email -->
                 <div class="form-grup">
                     <label for="email">Email</label >
-                    <input type="email" name="email" value="<?php echo $data["email"]?>" id="email" class="inputs email" placeholder="Enter Your Email Here" required />
+                    <input type="email" name="email" value="<?= $data["email"]?>" id="email" class="inputs email" placeholder="Enter Your Email Here" required />
                 </div>
                 
                 <!-- input : Address -->
                 <div class="form-grup">
                     <label for="address">Address</label >
-                    <textarea name="address" id="address" class="inputs address" placeholder="Enter Your Address Here" required><?php echo $data["alamat"]?></textarea>
+                    <textarea name="address" id="address" class="inputs address" placeholder="Enter Your Address Here" required><?= $data["alamat"]?></textarea>
                 </div>
 
                 <!-- input : Message -->
                 <div class="form-grup">
                     <label for="message">Message</label >
-                    <textarea name="message" id="message" class="inputs message" placeholder="Enter Your Message Here" required><?php echo $data["ucapan"]?></textarea>
+                    <textarea name="message" id="message" class="inputs message" placeholder="Enter Your Message Here" required><?= $data["ucapan"]?></textarea>
+                </div>
+                
+                <!-- input : Status -->
+                <div class="form-grup ">
+                    <div class="form-radio">
+                        <!-- Card Pilihan 1 -->
+                        <div class="card-radio status-hadir">
+                            <input type="radio" name="keterangan" id="status-hadir" value="hadir" <?php echo $data["keterangan"] == "hadir" ?? "checked" ?>>
+                            <label for="status-hadir"> Hadir</label>
+                        </div>
+    
+                        <!-- Card Pilihan 2 -->
+                        <div class="card-radio status-tidak_hadir">
+                            <input type="radio" name="keterangan" id="status-tidak_hadir" value="tidak_hadir" <?php echo $data["keterangan"] == "tidak_hadir" ?? "checked" ?>>
+                            <label for="status-tidak_hadir"> Tidak Hadir </label>
+                        </div>
+    
+                        <!-- Card Pilihan 3 -->
+                        <div class="card-radio status-belum_konfirmasi">
+                            <input type="radio" name="keterangan" id="status-belum_konfirmasi" value="belum_konfirmasi" <?php echo $data["keterangan"] == "belum_konfirmasi" ?? "checked" ?>>
+                            <label for="status-belum_konfirmasi"> Belum Konfirmasi </label>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- button : submit -->
@@ -98,11 +122,12 @@ if (isset($_POST['BtnUpdate'])) {
     $no_hp      = mysqli_real_escape_string($koneksi, $_POST['phoneNumber']);
     $email      = mysqli_real_escape_string($koneksi, $_POST['email']);
     $alamat     = mysqli_real_escape_string($koneksi, $_POST['address']);
-    $ucapan     = mysqli_real_escape_string($koneksi, $_POST['message']);
+    $ucapan     = $_POST['message'];
+    $keterangan = $_POST['keterangan'];
 
 
     // validasi sederhana
-    if ( empty($nama_tamu) || empty($no_hp) || empty($email)) {
+    if ( empty($nama_tamu) || empty($no_hp) || empty($email) || empty($keterangan)) {
 
         $status = "empty";
 
@@ -110,12 +135,13 @@ if (isset($_POST['BtnUpdate'])) {
 
         // query update
         $query = "
-            UPDATE tamu SET
+            UPDATE $tb_tamu SET
                 nama_tamu = '$nama_tamu',
                 no_hp      = '$no_hp',
                 email      = '$email',
                 alamat     = '$alamat',
-                ucapan     = '$ucapan'
+                ucapan     = '$ucapan',
+                keterangan = '$keterangan'
             WHERE id_tamu = '$id_tamu'
         ";
 

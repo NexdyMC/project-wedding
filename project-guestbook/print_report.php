@@ -17,6 +17,7 @@ include 'app/title.php';
             border: 3px solid black;
             padding: 8px;
             text-wrap: wrap;
+            border-collapse: collapse;
              overflow-wrap: break-word;
         }
         table {
@@ -34,6 +35,7 @@ include 'app/title.php';
 
 <table>
     <tr>
+        <th>Id Tamu</th>
         <th>Nama Tamu</th>
         <th>No HP</th>
         <th>Alamat</th>
@@ -43,20 +45,21 @@ include 'app/title.php';
         <th>Waktu Datang</th>
     </tr>
 
-<?php
-$query = mysqli_query($koneksi, "SELECT * FROM tamu");
-while ($data = mysqli_fetch_array($query)) {
-    echo "<tr>";
-    echo "<td>" . $data['nama_tamu'] . "</td>";
-    echo "<td>" . $data['no_hp'] . "</td>";
-    echo "<td>" . $data['alamat'] . "</td>";
-    echo "<td>" . $data['ucapan'] . "</td>";
-    echo "<td>" . $data['keterangan'] . "</td>";
-    echo "<td>" . $data['email'] . "</td>";
-    echo "<td>" . $data['waktu_datang'] . "</td>";
-    echo "</tr>";
-}
-?>
+    <?php
+    $query = mysqli_query($koneksi, "SELECT * FROM $tb_tamu ORDER BY waktu_datang DESC");
+    while ($data = mysqli_fetch_array($query)) {
+        echo "<tr>";
+        echo "<td>" . $data['id_tamu'] . "</td>";
+        echo "<td>" . $data['nama_tamu'] . "</td>";
+        echo "<td>" . $data['no_hp'] . "</td>";
+        echo "<td>" . $data['alamat'] . "</td>";
+        echo "<td>" . $data['ucapan'] . "</td>";
+        echo "<td>" . $data['keterangan'] . "</td>";
+        echo "<td>" . $data['email'] . "</td>";
+        echo "<td>" . $data['waktu_datang'] . "</td>";
+        echo "</tr>";
+    }
+    ?>
 
 </table>
 

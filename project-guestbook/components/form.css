@@ -18,8 +18,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  text-align: left;
 }
 .address,
 .message {
@@ -52,6 +50,7 @@ h1 {text-align: center;}
 
 input,
 textarea {
+  resize: none;
   padding: 0.5rem;
   border-radius: 0.5rem;
   border: none;
@@ -71,11 +70,72 @@ span {
   border-radius: 1rem;
   background: #FFFAF3;
 }
+/* 1. Menyembunyikan Lingkaran Radio Bawaan */
+.card-radio input[type="radio"] {
+    display: none;
+}
+
+/* Container agar card berjajar ke samping */
+.form-radio {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+/* 2. Desain Dasar Card (Belum Dipilih) */
+.card-radio label {
+    flex-direction: column;
+    padding: 0.32rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px; /* Membuat sudut membulat/kotak modern */
+    background: #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Efek transisi halus */
+    color: #1E1F24;
+    font-weight: 600;
+}
+
+/* status hadir */
+.status-hadir label:hover {
+    border-color: #80EC84;
+    background: #D4FFD3;
+    color: #00881A;   
+}
+.status-hadir  input[type="radio"]:checked + label {
+    border-color: #51C158; /* Warna garis tepi saat aktif */
+    background: #9CF79D; /* Warna latar saat aktif */
+    color: #00881A;
+}
+
+/* status tidak hadir */
+.status-tidak_hadir label:hover {
+    border-color: #F2C3C1;
+    background: #FBECEC;
+    color: #D56264;
+}
+.status-tidak_hadir  input[type="radio"]:checked + label {
+    border-color: #DC9897; /* Warna garis tepi saat aktif */
+    background: #F9D2D0; /* Warna latar saat aktif */
+    color: #D56264;
+}
+
+/* status belum konfirmasi */
+.status-belum_konfirmasi label:hover {
+    border-color: #D9D8D8;
+    background: #973A0016;
+    color: #656463;
+}
+.status-belum_konfirmasi  input[type="radio"]:checked + label {
+    border-color: #BFBAB7; /* Warna garis tepi saat aktif */
+    background: #5A230025; /* Warna latar saat aktif */
+    color: #656463;
+}
+
 /* Button Form */
 .form-grup {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.25rem;
 }
 
 .hero-submit {
@@ -90,15 +150,16 @@ button {
 }
 
 .btn-update { 
-    border: 1px solid #FF97B7;
-    background: #FFF6F8;
-    color: #F25F8F;
-    &:hover {
-        background: #F3003115;
-    }
+  font-weight: 700;
+  border: 2px solid #FF97B7;
+  background: #FFF6F8;
+  color: #F25F8F;
+  &:hover {
+      background: #F3003115;
+  }
 }
 .btn-delete { 
-    border: 1px solid #F6BECB;
+    border: 2px solid #F6BECB;
     background: #FEF7F8;
     color: #F13F82;
     &:hover {

@@ -18,7 +18,7 @@ header("Expires: 0");
     </tr>
 
 <?php
-$query = mysqli_query($koneksi, "SELECT * FROM tamu");
+$query = mysqli_query($koneksi, "SELECT * FROM $tb_tamu");
 
 while ($data = mysqli_fetch_assoc($query)) {
     echo "<tr>";

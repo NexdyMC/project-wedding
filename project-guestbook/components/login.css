@@ -6,7 +6,11 @@
 }
 
 .info-warning {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
   background: rgba(255, 0, 0, 0.26);
+  color: red;
+  text-align: center;
 }
 
 .grid {
@@ -65,9 +69,11 @@
   border: none;
   transition-duration: 0.3s;
   background: #927e4a79;
-
+  font-weight: 600;
   &:hover {
     background: #927e4a;
+    color: #eee;
+
   }
 }
 
@@ -88,6 +94,7 @@
   }
 
   button {
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -97,6 +97,7 @@ table tr td {
 
     <table>
         <tr>
+            <th>Id Tamu</th>
             <th>Nama Tamu</th>
             <th>No HP</th>
             <th>Alamat</th>
@@ -107,9 +108,10 @@ table tr td {
         </tr>
 
         <?php
-        $query = mysqli_query($koneksi, "SELECT * FROM tamu");
+        $query = mysqli_query($koneksi, "SELECT * FROM $tb_tamu");
         while ($data = mysqli_fetch_array($query)) {
             echo "<tr>";
+            echo "<td>" . $data['id_tamu'] . "</td>";
             echo "<td>" . $data['nama_tamu'] . "</td>";
             echo "<td>" . $data['no_hp'] . "</td>";
             echo "<td>" . $data['alamat'] . "</td>";

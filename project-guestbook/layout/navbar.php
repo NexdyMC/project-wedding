@@ -4,7 +4,7 @@
 </div>
 
 <div class="navbar-profile">
-  <img src="person.jpg" width="100" height="100" />
+  <img src="person.jpg" width="120" height="120" />
   <p>Welcome</p>
   <h2>
     <?php echo $_SESSION['username'] ?? 'Guest'; ?>
@@ -23,7 +23,7 @@
     </a>
   </li>
   <li data-aos="fade-left" data-aos-duration="1400">
-    <a href="messages.php">
+    <a href="messages copy.php">
       <span class="material-symbols-outlined">comment</span>Messages
     </a>
   </li>

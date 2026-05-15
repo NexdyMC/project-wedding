@@ -43,7 +43,7 @@ include 'app/title.php';
 
             
                 <?php
-                  $query = mysqli_query($koneksi, "SELECT nama_tamu, ucapan, alamat FROM tamu ORDER BY waktu_datang DESC");
+                  $query = mysqli_query($koneksi, "SELECT nama_tamu, ucapan, alamat FROM $tb_tamu ORDER BY waktu_datang DESC");
                   while ($data = mysqli_fetch_array($query)) {
                 ?>
                 

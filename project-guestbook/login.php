@@ -3,19 +3,19 @@ include 'app/koneksi.php';
 include 'app/title.php';
 
 session_start();
-
+$warning = "";
 if (isset($_POST['submit'])) {
 
   $username = $_POST['username'];
   $password = $_POST['password'];
 
-  $query = mysqli_query($koneksi, "SELECT * FROM petugas WHERE username='$username'");
+  $query = mysqli_query($koneksi, "SELECT * FROM $tb_petugas WHERE username='$username' and password='$password'");
   $data = mysqli_fetch_assoc($query);
 
   if ($data) {
     header("Location: dashboard.php");
   } else {
-    echo "Username tidak ditemukan";
+    $warning =  "<div class=\"info-warning\"> Username tidak ditemukan!</div>";
   }
 }
 ?>
@@ -80,8 +80,8 @@ if (isset($_POST['submit'])) {
             <div class="divider"></div>
             
             <button class="btn-login" type="submit" name="submit">Login</button>
-            <div class="info-warning">
-              </div>
+            
+            <?= $warning; ?>  
             <!-- bantuan  -->
             <div class="form-footer">
               <p>Belum punya akun? <a href="register.php"> Register</a></p>

@@ -1,7 +1,7 @@
 <?php
 include 'app/koneksi.php';
 include 'app/title.php'; 
-include 'cuid.php';
+include 'app/cuid.php';
 
 if (isset($_POST['register'])) {
 
@@ -13,7 +13,7 @@ if (isset($_POST['register'])) {
   // $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
   // Cek username sudah ada atau belum
-  $cek = mysqli_query($koneksi, "SELECT * FROM petugas WHERE username='$username'");
+  $cek = mysqli_query($koneksi, "SELECT * FROM $tb_petugas WHERE username='$username'");
   
   if (mysqli_num_rows($cek) > 0) {
       echo "<script>alert('Username sudah digunakan!');</script>";

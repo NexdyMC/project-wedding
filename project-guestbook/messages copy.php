@@ -20,7 +20,7 @@ include 'app/title.php';
       <?php include "components/dashboard.css"; include "components/messages copy.css"; ?>
     </style>
   </head>
-  <body>
+  <body>;
     <main class="dashboard-container">
       <!-- dashboard : header -->
       <div class="dashboard-header">
@@ -39,12 +39,12 @@ include 'app/title.php';
           <div class="rectangle-messages" data-aos="fade-up" data-aos-duration="2000">
             <div class="messages-header">
               <div class="icon animate__animated animate__fadeInDown">
-                <span class="material-symbols-outlined icon-box">home</span>
+                <span class="material-symbols-outlined icon-box">comment</span>
                 <h2 class="animate__animated animate__fadeInDown">Message</h2>
               </div>
               <div class="messages-body">
                 <?php
-                  $query = mysqli_query($koneksi, "SELECT nama_tamu, ucapan, alamat FROM tamu ORDER BY waktu_datang DESC");
+                  $query = mysqli_query($koneksi, "SELECT nama_tamu, ucapan, alamat FROM $tb_tamu ORDER BY waktu_datang DESC");
                   while ($data = mysqli_fetch_array($query)) {
                 ?>
                 <div class="profile-account">
