@@ -19,10 +19,10 @@ Project Wedding adalah aplikasi berbasis web yang dirancang untuk memantau kehad
 
 *(Tambahkan gambar screenshot aplikasi di sini)*
 
-![Dashboard View](dashboard.jpg)
+![Dashboard View](dashboard.png)
 > *Tampilan Dashboard Utama.*
 
-![Guest List & Live Search](buku-tamu.jpg)
+![Guest List & Live Search](buku-tamu.png)
 > *Tampilan daftar tamu dengan fitur Live Search dan Avatar Dinamis.*
 
 ## 👨‍💻 Tim Pengembang (Developers)
