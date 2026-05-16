@@ -170,7 +170,13 @@ $total_semua = $d_total['total'];
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init();
+  AOS.init();
+    
+  function toggleMenu() {
+    document.getElementById("sidebar").classList.toggle("active");
+    document.getElementById("overlay").classList.toggle("active");
+  }
+
   const tombolHapus = document.querySelectorAll('.btn-delete');
 
   tombolHapus.forEach(tombol => {
@@ -195,12 +201,6 @@ $total_semua = $d_total['total'];
       })
     });
   });
-
-  function toggleMenu() {
-    document.getElementById("sidebar").classList.toggle("active");
-    document.getElementById("overlay").classList.toggle("active");
-  }
-
 
   // mengubah background, warna, dan border pada icon sesuai dengan status 
   document.addEventListener("DOMContentLoaded", function () {

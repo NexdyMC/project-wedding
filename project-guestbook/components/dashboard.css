@@ -63,8 +63,9 @@
 }
 
 .dashboard-navbar ul li a:hover {
-  background: #c47b82;
+  background: linear-gradient(90deg, #c47b82, #E98FA1);
   color: white;
+  /* border: 2px solid   ; */
 }
 
 /* NAVBAR PROFILE */
@@ -82,7 +83,8 @@
   overflow-y: auto;
   max-height: calc(100vh - 60px);
   grid-area: body;
-  background: #fef1eb;
+  /* background: #fef1eb; */
+  background: #fff8f5;
   padding: 20px;
 }
 
@@ -180,7 +182,7 @@
     z-index: 999;
   }
 
-  .dashboard-navbar .active {
+  .dashboard-navbar.active {
     left: 0;
   }
 

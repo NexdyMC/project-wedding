@@ -36,7 +36,8 @@ if (!isset($_SESSION['login'])) {
         <?php include "layout/navbar.php"?>
       </div>
 
-  <!-- <div class="overlay" id="overlay" onclick="toggleMenu()"></div> -->
+      <div class="overlay" id="overlay" onclick="toggleMenu()">
+      </div>
       <!-- dashboard : content -->
       <div class="dashboard-content">
         <div class="content">
