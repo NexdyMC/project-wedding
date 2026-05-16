@@ -21,12 +21,6 @@ if (!isset($_SESSION['login'])) {
     
     </style>
   </head>
-
-  <style>
-
-
-
-  </style>
   <body>
     <main class="dashboard-container">
 
@@ -44,17 +38,19 @@ if (!isset($_SESSION['login'])) {
       <div class="dashboard-content">
         <div class="content">
 
-          <div class="attendance" data-aos="fade-up" data-aos-duration="2000">
+          <div class="attendance">
+
             <div class="herois">
-              <div class="icon">
+              <div class="icon" data-aos="fade-right" data-aos-duration="800">
                 <span class="material-symbols-outlined icon-box">person</span>
                 <h2>Quests</h2>
               </div>
-              <a href="form.php">Add Quests <span class="material-symbols-outlined">add</span></a>
+
+              <a href="form.php" data-aos="fade-left" data-aos-duration="800">Add Quests <span class="material-symbols-outlined">add</span></a>
             </div>
 
             <!-- panel : search data tabel -->
-            <div class="rectangle-search">
+            <div class="rectangle-search" data-aos="fade-top" data-aos-duration="800">
               <div class="search">
                 <input type="text" name="keyword" id="input-search" placeholder="Search Name ........">
                 <button id="btn-search">
@@ -64,8 +60,8 @@ if (!isset($_SESSION['login'])) {
             </div>
 
             <!-- table : message -->
-            <div class="list-attendance">
-              <table>
+            <div class="list-attendance" data-aos="fade-top" data-aos-duration="800">
+              <table id="guestTable">
                 <thead>
                   <tr>
                     <th>Nama Tamu</th>
@@ -103,6 +99,22 @@ if (!isset($_SESSION['login'])) {
                 </tbody>
               </table>
             </div>
+
+            <h3>Keterangan</h3>
+            <div class="item-keterangan">
+              <!-- keterangan : hadir -->
+              <div class="material-symbols-outlined status-icon">Check</div> 
+              <p>Hadir</p>
+              
+              <!-- keterangan : tidak hadir -->
+              <div class="material-symbols-outlined status-icon">Close</div> 
+              <p>Tidak Hadir</p>
+              
+              <!-- keterangan : belum konfirmasi -->
+              <div class="material-symbols-outlined status-icon">Help</div> 
+              <p>Belum Konfirmasi</p>
+            </div>
+
           </div>
         </div>
       </div>
@@ -116,18 +128,35 @@ if (!isset($_SESSION['login'])) {
           document.getElementById("overlay").classList.toggle("active");
       }
 
-      document.getElementById("input-search").addEventListener("input", function() {
-          let keyword = this.value;
+      // Menangkap elemen input dan semua baris di dalam tbody
+      const searchInput = document.getElementById('input-search');
+      const tableRows = document.querySelectorAll('#guestTable tbody tr');
 
-          let xhr = new XMLHttpRequest();
-          xhr.onreadystatechange = function() {
-              if (this.readyState == 4 && this.status == 200) {
-                  document.getElementById("result").innerHTML = this.responseText;
+      // Menambahkan event listener 'input' agar merespon setiap kali ada ketikan
+      searchInput.addEventListener('input', function(e) {
+          // Ubah teks pencarian menjadi huruf kecil semua agar case-insensitive
+          const searchString = e.target.value.toLowerCase();
+
+          // Lakukan perulangan untuk setiap baris tabel
+          tableRows.forEach(row => {
+              // Ambil sel pertama dari baris tersebut (kolom 'Nama Tamu')
+              // Gunakan td:nth-child(1) karena Nama Tamu ada di kolom pertama
+              const nameCell = row.querySelector('td:nth-child(1)');
+
+              if (nameCell) {
+                  // Ambil teks dari dalam sel dan ubah ke huruf kecil
+                  const nameText = nameCell.textContent.toLowerCase();
+
+                  // Cek apakah teks pada kolom nama mengandung kata kunci pencarian
+                  if (nameText.includes(searchString)) {
+                      // Jika cocok, tampilkan barisnya
+                      row.style.display = '';
+                  } else {
+                      // Jika tidak cocok, sembunyikan barisnya
+                      row.style.display = 'none';
+                  }
               }
-          };
-
-          xhr.open("GET", "search.php?keyword=" + keyword, true);
-          xhr.send();
+          });
       });
 
       document.addEventListener("DOMContentLoaded", function () {

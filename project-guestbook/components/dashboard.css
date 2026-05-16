@@ -22,7 +22,7 @@
   align-items: center;
   justify-content: center;
   padding: 10px 20px;
-  border-bottom: 2px solid #f4b0b0;
+  /* border-bottom: 2px solid #f4b0b0; */
 }
 
 .burger {
@@ -35,7 +35,11 @@
 /*  DASHBOARD : NAVBAR */
 .dashboard-navbar {
   grid-area: navbar;
-  background: #e0acb0;
+  /* background: #e0acb0; */
+  /* Gradient modern dari sudut kiri atas ke kanan bawah */
+  background: linear-gradient(90deg, #d6a1ab 0%, #fcdddf 100%);
+  /* box-shadow: 4px 0 15px rgba(214, 161, 171, 0.2); Memberikan bayangan lembut */
+  color: #333;
   padding: 20px;
   transition: 0.3s ease;
   /* display: grid; */
@@ -63,7 +67,7 @@
   color: white;
 }
 
-/* PROFILE */
+/* NAVBAR PROFILE */
 .navbar-profile {
   text-align: center;
 }
@@ -103,16 +107,22 @@
 }
 
 .rectangle-green {
-  background: #d9e1d1;
+  /* background: #d9e1d1;  */
+  background: linear-gradient(135deg, #d4e6d8 0%, #e9f2eb 100%);
   border: 2px solid #b6c1aa;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
 }
 .rectangle-red {
-  background: #ffbaba;
+  /* background: #ffbaba; */
+  background: linear-gradient(135deg, #f7cdd2 0%, #fae6e8 100%);
   border: 2px solid #E98FA1;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
 }
 .rectangle-gray {
-  background: #fff6f2;
-  border: 2px solid #808080;
+  /* background: #fff6f2; */
+  background: linear-gradient(135deg, #ffffff 0%, #fcfcfc 100%);
+  border: 2px solid #808080; 
+  box-shadow: 0 4px 10px rgba(214, 161, 171, 0.08);
 }
 
 /* OVERLAY */
@@ -273,8 +283,10 @@ table {
   width: 100%;
 }
 table tr th {
-  background-color: #e8b4b8;
+  /* background-color: #e8b4b8; */
   padding: 0.5em;
+  background: linear-gradient( #e4bcc1 0%, #ecd0d4 100%);
+  color: #2c1a1d;
 }
 table tr td {
   padding: 0.5em;
@@ -282,9 +294,11 @@ table tr td {
 .icon-edit {
   color: #222;
   text-decoration: none;
-
+  transition-duration: .5s;
   &:hover {
-    color: #e8b4b8;
+    background: #FFEAED;
+    color: #A75366;
+    border-radius: 0.5rem;
   }
 }
 

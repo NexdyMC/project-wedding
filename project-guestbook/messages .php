@@ -1,10 +1,6 @@
 <?php
 include 'app/koneksi.php';
 include 'app/title.php';
-session_start();
-if (!isset($_SESSION['login'])) {
-  header('location: login.php');
-}
 ?>
 <!doctype html>
 <html lang="en">
@@ -21,7 +17,7 @@ if (!isset($_SESSION['login'])) {
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
       @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=IM+Fell+Double+Pica:ital@0;1&display=swap');
-      <?php include "components/dashboard.css"; include "components/messages copy.css"; ?>
+      <?php include "components/dashboard.css"; include "components/messages.css"; ?>
     </style>
   </head>
   <body>
@@ -42,22 +38,24 @@ if (!isset($_SESSION['login'])) {
         <div class="content">
           <div class="rectangle-messages" data-aos="fade-up" data-aos-duration="2000">
             <div class="messages-header">
-              <div class="icon animate__animated animate__fadeInDown">
-                <span class="material-symbols-outlined icon-box">comment</span>
-                <h2 class="animate__animated animate__fadeInDown">Message</h2>
-              </div>
+              <h1 class="animate__animated animate__rubberBand">Messages</h1>
               <div class="messages-body">
+
+            
                 <?php
                   $query = mysqli_query($koneksi, "SELECT nama_tamu, ucapan, alamat FROM $tb_tamu ORDER BY waktu_datang DESC");
                   while ($data = mysqli_fetch_array($query)) {
                 ?>
-                <div class="profile-account">
-                  <span class="material-symbols-outlined person">person</span>
-                  <p> <?php echo " " . $data['nama_tamu'] . " - " . $data["alamat"] ; ?>  </p>    
-                </div>
-                <div class="messages-1 msg">
-                  <p class="message-account "><?php echo $data['ucapan']; ?></p>
-                </div>
+                
+                  <div class="profile-account">
+                    <span class="material-symbols-outlined animate__animated animate__rubberBand">person</span>
+                    <p>
+                      <?php echo " " . $data['nama_tamu'] . " - " . $data["alamat"] ; ?> 
+                    </p>    
+                    </div>
+                    <div class="messages-1 msg">
+                      <p class="message-account "><?php echo $data['ucapan']; ?></p>
+                  </div>
                 <?php }?>
               </div>
             </div>

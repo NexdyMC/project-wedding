@@ -53,14 +53,14 @@ $total_semua = $d_total['total'];
 
       <!-- CONTENT -->
       <div class="dashboard-content">
-        <div class="content ">
-          <div class="icon animate__animated animate__fadeInDown" data-aos="fade-down" >
+        <div class="content">
+
+          <div class="icon " data-aos="fade-right" data-aos-duration="1000" >
               <span class="material-symbols-outlined icon-box">home</span>
-              <h2 class="animate__animated animate__fadeInDown">Dashboard</h2>
+              <h2 data-aos="fade-right">Dashboard</h2>
           </div>
-          <!-- <h2>Dashboard</h2> -->
-          <h4 class="animate__animated animate__fadeInDown">Welcome back, User!!</h4>
-          <p class="animate__animated animate__fadeInDown">Here's an overview of the wedding attendance</p>
+          <h4 data-aos="fade-right" data-aos-duration="800" >Welcome back, User!!</h4>
+          <p data-aos="fade-right" data-aos-duration="800" >Here's an overview of the wedding attendance</p>
 
           <div class="card-container" data-aos="fade-up">
             
@@ -162,53 +162,6 @@ $total_semua = $d_total['total'];
               <p>Belum Konfirmasi</p>
             </div>
 
-          </div>
-
-          <!-- Akun Admin -->
-          <div class="attendance"  data-aos-duration="1000">
-              <div class="attendance-header">
-                <div class="icon">
-                    <span class="material-symbols-outlined icon-box">history</span>
-                    <h2>Admin Attendance</h2>
-                </div>
-                <a href="view.php">View All<span class="material-symbols-outlined">expand_content</span></a>
-              </div>
-
-            <div class="list-attendance">
-              
-              <!-- table petugas -->
-              <table>
-                <tr>
-                  <th>UID Petugas</th>
-                  <th>Nama Petugas</th>
-                  <th>Username</th>
-                  <th>Password</th>
-                  <th>Edit</th>
-                  <th>Delete</th>
-                </tr>
-
-                <?php
-                  $query = mysqli_query($koneksi, "SELECT * FROM $tb_petugas ");
-                  while ($data = mysqli_fetch_array($query)) {
-                    echo "<tr>";
-                    echo "<td>" . $data['id_petugas'] . "</td>";
-                    echo "<td>" . $data['nama_petugas'] . "</td>";
-                    echo "<td>" . $data['username'] . "</td>";
-                    echo "<td>" . $data['password'] . "</td>";
-                    // echo "<td>" . $data['ucapan'] . "</td>";
-                    echo "<td> <a href='edit_admin.php?id=" . $data['id_petugas'] .
-                    "'class='icon-edit'  style='display: flex; justify-content: center;'>
-                    <span class='material-symbols-outlined icon'>edit</span>
-                    </a>
-                    </td>";
-                    echo "<td> <a href='app/crud.php?id=" . $data['id_petugas'] . "'class='icon-edit btn-delete' style='display: flex; justify-content: center;'>
-                    <span class='material-symbols-outlined icon'>delete</span>
-                    </a>
-                    </td>";
-                  }
-                  ?>
-              </table>
-            </div>
           </div>
         </div>
       </div>

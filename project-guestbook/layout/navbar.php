@@ -3,7 +3,7 @@
   <span class="material-symbols-outlined">menu</span>
 </div>
 
-<div class="navbar-profile">
+<div class="navbar-profile" data-aos="fade-down" data-aos-duration="800">
   <img src="person.jpg" width="120" height="120" />
   <p>Welcome</p>
   <h2>
@@ -26,7 +26,7 @@
     </a>
   </li>
   <li data-aos="fade-left" data-aos-duration="1400">
-    <a href="messages copy.php">
+    <a href="messages.php">
       <span class="material-symbols-outlined">comment</span>Messages
     </a>
   </li>
